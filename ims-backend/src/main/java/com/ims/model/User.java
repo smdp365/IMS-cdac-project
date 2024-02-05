@@ -1,4 +1,4 @@
-package com.shivangi.springpractice.crudspringapp.model;
+package com.ims.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

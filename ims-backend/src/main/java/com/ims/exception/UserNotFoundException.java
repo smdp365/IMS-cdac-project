@@ -1,4 +1,4 @@
-package com.shivangi.springpractice.crudspringapp.exception;
+package com.ims.exception;
 
 public class UserNotFoundException extends RuntimeException{
     public UserNotFoundException(Long id){

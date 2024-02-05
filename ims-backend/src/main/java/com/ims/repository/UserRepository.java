@@ -1,7 +1,8 @@
-package com.shivangi.springpractice.crudspringapp.repository;
+package com.ims.repository;
 
-import com.shivangi.springpractice.crudspringapp.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.ims.model.User;
 
 public interface UserRepository extends JpaRepository<User, Long> {
 }

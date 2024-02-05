@@ -1,13 +1,13 @@
-package com.shivangi.springpractice.crudspringapp;
+package com.ims;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class CrudReactSpringAppApplication {
+public class IMSApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CrudReactSpringAppApplication.class, args);
+		SpringApplication.run(IMSApplication.class, args);
 	}
 
 }

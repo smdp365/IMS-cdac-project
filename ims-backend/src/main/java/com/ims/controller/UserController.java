@@ -1,8 +1,5 @@
-package com.shivangi.springpractice.crudspringapp.controller;
+package com.ims.controller;
 
-import com.shivangi.springpractice.crudspringapp.exception.UserNotFoundException;
-import com.shivangi.springpractice.crudspringapp.model.User;
-import com.shivangi.springpractice.crudspringapp.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -12,6 +9,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.ims.exception.UserNotFoundException;
+import com.ims.model.User;
+import com.ims.repository.UserRepository;
 
 import java.util.List;
 
