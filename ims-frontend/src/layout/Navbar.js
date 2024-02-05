@@ -7,7 +7,7 @@ export default function Navbar() {
             <nav className="navbar navbar-expand-sm navbar-dark bg-success">
                 <div className="container">
                     <Link className="navbar-brand" to={"/"}>
-                        Inventory Management System abc
+                        Inventory Management System
                     </Link>
                     <button
                         className="navbar-toggler d-lg-none"
