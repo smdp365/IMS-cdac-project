@@ -1,9 +1,10 @@
 import axios from "axios";
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
-export default function Adduser() {
+export default function EditUser() {
     let navigate = useNavigate();
+    const { id } = useParams();
 
     //store user information inside the state
     const [user, setUser] = useState({
@@ -19,18 +20,27 @@ export default function Adduser() {
         setUser({ ...user, [evt.target.name]: evt.target.value });
     };
 
+    useEffect(() => {
+        loadUser();
+    }, []);
+
     const onSubmitFun = async (evt) => {
         evt.preventDefault();
 
-        await axios.post("http://localhost:8080/user", user);
+        await axios.put(`http://localhost:8080/user/${id}`, user);
         navigate("/");
+    };
+
+    const loadUser = async () => {
+        const result = await axios.get(`http://localhost:8080/user/${id}`);
+        setUser(result.data);
     };
 
     return (
         <div className="container">
             <div className="row">
                 <div className="col-md-6 offset-md-3 border rounded p-4 mt-2 shadow">
-                    <h2 className="text-center m-4">Register User</h2>
+                    <h2 className="text-center m-4">Edit User</h2>
                     <hr />
                     <form onSubmit={(evt) => onSubmitFun(evt)}>
                         <div className="mb-3">
@@ -93,7 +103,7 @@ export default function Adduser() {
                             type="submit"
                             className="btn btn-outline-success"
                         >
-                            Submit
+                            Save
                         </button>
                         <Link className="btn btn-outline-danger m-2" to="/">
                             Cancel

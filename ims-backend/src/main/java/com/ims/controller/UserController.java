@@ -17,7 +17,7 @@ import com.ims.repository.UserRepository;
 import java.util.List;
 
 @RestController
-@CrossOrigin("http://localhost:3000")
+@CrossOrigin("http://localhost:5173")
 public class UserController {
 
     @Autowired
