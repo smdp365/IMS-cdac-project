@@ -16,7 +16,11 @@ function App() {
 
                 <Routes>
                     <Route exact path="/" element={<ShowAllEmployee />} />
-                    <Route exact path="/addemployee" element={<AddEmployee />} />
+                    <Route
+                        exact
+                        path="/addemployee"
+                        element={<AddEmployee />}
+                    />
                     <Route
                         exact
                         path="/editemployee/:id"
