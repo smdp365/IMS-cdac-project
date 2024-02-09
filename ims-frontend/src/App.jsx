@@ -1,28 +1,36 @@
 import "./App.css";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import Navbar from "./layout/Navbar";
-import Home from "./components/Home";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Adduser from "./components/Adduser";
-import EditUser from "./components/EditUser";
-import Viewuser from "./components/Viewuser";
+import DetailsEmployee from "./components/DetailsEmployee";
+import AddEmployee from "./components/AddEmployee";
+import EditEmployee from "./components/EditEmployee";
+import ShowAllEmployee from "./components/ShowAllEmployee";
 
 function App() {
-  return (
-    <div className="App">
-      <Router>
-        {/* Component */}
-        <Navbar />
+    return (
+        <div className="App">
+            <Router>
+                {/* Component */}
+                <Navbar />
 
-        <Routes>
-          <Route exact path="/" element={<Home />} />
-          <Route exact path="/adduser" element={<Adduser />} />
-          <Route exact path="/edituser/:id" element={<EditUser />} />
-          <Route exact path="/viewuser/:id" element={<Viewuser />} />
-        </Routes>
-      </Router>
-    </div>
-  );
+                <Routes>
+                    <Route exact path="/" element={<ShowAllEmployee />} />
+                    <Route exact path="/addemployee" element={<AddEmployee />} />
+                    <Route
+                        exact
+                        path="/editemployee/:id"
+                        element={<EditEmployee />}
+                    />
+                    <Route
+                        exact
+                        path="/viewemployee/:id"
+                        element={<DetailsEmployee />}
+                    />
+                </Routes>
+            </Router>
+        </div>
+    );
 }
 
 export default App;

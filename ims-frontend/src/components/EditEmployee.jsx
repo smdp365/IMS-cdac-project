@@ -2,45 +2,45 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
-export default function EditUser() {
+export default function EditEmployee() {
     let navigate = useNavigate();
     const { id } = useParams();
 
-    //store user information inside the state
-    const [user, setUser] = useState({
+    //store employee information inside the state
+    const [employee, setEmployee] = useState({
         firstName: "",
         lastName: "",
         email: "",
         mobNo: "",
     });
 
-    const { firstName, lastName, email, mobNo } = user;
+    const { firstName, lastName, email, mobNo } = employee;
 
     const onInputChange = (evt) => {
-        setUser({ ...user, [evt.target.name]: evt.target.value });
+        setEmployee({ ...employee, [evt.target.name]: evt.target.value });
     };
 
     useEffect(() => {
-        loadUser();
+        loadEmployee();
     }, []);
 
     const onSubmitFun = async (evt) => {
         evt.preventDefault();
 
-        await axios.put(`http://localhost:8080/user/${id}`, user);
+        await axios.put(`http://localhost:8080/employee/${id}`, employee);
         navigate("/");
     };
 
-    const loadUser = async () => {
-        const result = await axios.get(`http://localhost:8080/user/${id}`);
-        setUser(result.data);
+    const loadEmployee = async () => {
+        const result = await axios.get(`http://localhost:8080/employee/${id}`);
+        setEmployee(result.data);
     };
 
     return (
         <div className="container">
             <div className="row">
                 <div className="col-md-6 offset-md-3 border rounded p-4 mt-2 shadow">
-                    <h2 className="text-center m-4">Edit User</h2>
+                    <h2 className="text-center m-4">Edit Employee</h2>
                     <hr />
                     <form onSubmit={(evt) => onSubmitFun(evt)}>
                         <div className="mb-3">
