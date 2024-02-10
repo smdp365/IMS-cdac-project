@@ -25,7 +25,6 @@
   
   .brand {
     color: #ffffff !important; 
-    margin-left: -600px;
   }
 
   .brand:hover{
@@ -47,6 +46,5 @@
     background-color: #023e8a;
     color: #ffffff; 
     border: 2px solid #ffffff;
-    margin-left: -600px;
   }
 
