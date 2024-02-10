@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
+import styles from "../css/ShowAllEmployee.module.css";
 
 export default function ShowAllEmployee() {
     const [employees, setEmployees] = useState([]);
-    const { id } = useParams();
+    // const { id } = useParams();
 
     //everytime the page is loaded this part will be shown on the page
     useEffect(() => {
@@ -22,52 +23,101 @@ export default function ShowAllEmployee() {
     };
 
     return (
-        <div className="container">
+        <div className={`container ${styles.mainContainer}`}>
             <div className="py-4">
                 <div className="table-responsive">
-                    <table className="table table-success shadow">
+                    <table className="table table-primary shadow">
                         <thead>
                             <tr>
-                                <th scope="col">S.No.</th>
-                                <th scope="col">ID</th>
-                                <th scope="col">First Name</th>
-                                <th scope="col">Last Name</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Mobile no.</th>
-                                <th scope="col">Actions</th>
+                                <th
+                                    className={`${styles.tableHeading}`}
+                                    scope="col"
+                                >
+                                    S.No.
+                                </th>
+                                <th
+                                    className={`${styles.tableHeading}`}
+                                    scope="col"
+                                >
+                                    ID
+                                </th>
+                                <th
+                                    className={`${styles.tableHeading}`}
+                                    scope="col"
+                                >
+                                    First Name
+                                </th>
+                                <th
+                                    className={`${styles.tableHeading}`}
+                                    scope="col"
+                                >
+                                    Last Name
+                                </th>
+                                <th
+                                    className={`${styles.tableHeading}`}
+                                    scope="col"
+                                >
+                                    Email
+                                </th>
+                                <th
+                                    className={` ${styles.tableHeading}`}
+                                    scope="col"
+                                >
+                                    Mobile no.
+                                </th>
+                                <th
+                                    className={` ${styles.tableHeading}`}
+                                    scope="col"
+                                >
+                                    Actions
+                                </th>
                             </tr>
                         </thead>
                         <tbody>
                             {employees.map((employee, index) => (
                                 <tr>
-                                    <th scope="row" key={index}>
+                                    <th
+                                        scope="row"
+                                        key={index}
+                                        className={`${styles.tableRow}`}
+                                    >
                                         {index + 1}
                                     </th>
-                                    <td>{employee.id}</td>
-                                    <td>{employee.firstName}</td>
-                                    <td>{employee.lastName}</td>
-                                    <td>{employee.email}</td>
-                                    <td>{employee.mobNo}</td>
-                                    <td>
+                                    <td className={`${styles.tableRow}`}>
+                                        {employee.id}
+                                    </td>
+                                    <td className={`${styles.tableRow}`}>
+                                        {employee.firstName}
+                                    </td>
+                                    <td className={`${styles.tableRow}`}>
+                                        {employee.lastName}
+                                    </td>
+                                    <td className={`${styles.tableRow}`}>
+                                        {employee.email}
+                                    </td>
+                                    <td className={`${styles.tableRow}`}>
+                                        {employee.mobNo}
+                                    </td>
+                                    <td className={`${styles.tableRow}`}>
                                         <Link
-                                            className="btn btn-success mx-2"
+                                            className={`btn mx-2 ${styles.Btn}`}
                                             to={`/viewEmployee/${employee.id}`}
                                         >
-                                            Detail
+                                            &#x2630;
                                         </Link>
                                         <Link
-                                            className="btn btn-outline-primary mx-2"
+                                            className={`btn mx-2 ${styles.Btn}`}
                                             to={`/editEmployee/${employee.id}`}
                                         >
-                                            Edit
+                                            &#9998;
                                         </Link>
                                         <button
-                                            className="btn btn-danger mx-2"
+                                            className={`btn mx-2 ${styles.Btn}`}
                                             onClick={() =>
                                                 deleteEmployee(employee.id)
                                             }
                                         >
-                                            Delete
+                                            &#10006;
                                         </button>
                                     </td>
                                 </tr>

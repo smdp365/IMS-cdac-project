@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
+import styles from "../css/EditEmployee.module.css";
 
 export default function EditEmployee() {
     let navigate = useNavigate();
@@ -37,19 +38,22 @@ export default function EditEmployee() {
     };
 
     return (
-        <div className="container">
+        <div className={`${styles.container}`}>
             <div className="row">
-                <div className="col-md-6 offset-md-3 border rounded p-4 mt-2 shadow">
-                    <h2 className="text-center m-4">Edit Employee</h2>
+                <div
+                    className={`col-md-6 offset-md-3 border rounded p-4 mt-2 shadow ${styles.empForm}`}
+                >
+                    <h2 className="text-center m-3">Edit Employee</h2>
                     <hr />
                     <form onSubmit={(evt) => onSubmitFun(evt)}>
                         <div className="mb-3">
-                            <lable htmlFor="firstName" className="form-lable">
-                                First Name
-                            </lable>
+                            <lable
+                                htmlFor="firstName"
+                                className="form-lable"
+                            ></lable>
                             <input
                                 type="text"
-                                className="form-control"
+                                className={`form-control ${styles.empFormField}`}
                                 placeholder="Enter your first name"
                                 name="firstName"
                                 value={firstName}
@@ -58,12 +62,13 @@ export default function EditEmployee() {
                         </div>
 
                         <div className="mb-3">
-                            <lable htmlFor="lastName" className="form-lable">
-                                Last Name
-                            </lable>
+                            <lable
+                                htmlFor="lastName"
+                                className="form-lable"
+                            ></lable>
                             <input
                                 type="text"
-                                className="form-control"
+                                className={`form-control ${styles.empFormField}`}
                                 placeholder="Enter your last name"
                                 name="lastName"
                                 value={lastName}
@@ -72,12 +77,13 @@ export default function EditEmployee() {
                         </div>
 
                         <div className="mb-3">
-                            <lable htmlFor="email" className="form-lable">
-                                Email
-                            </lable>
+                            <lable
+                                htmlFor="email"
+                                className="form-lable"
+                            ></lable>
                             <input
                                 type="text"
-                                className="form-control"
+                                className={`form-control ${styles.empFormField}`}
                                 placeholder="Enter your email address"
                                 name="email"
                                 value={email}
@@ -86,12 +92,13 @@ export default function EditEmployee() {
                         </div>
 
                         <div className="mb-3">
-                            <lable htmlFor="mobNo" className="form-lable">
-                                Mobile Number
-                            </lable>
+                            <lable
+                                htmlFor="mobNo"
+                                className="form-lable"
+                            ></lable>
                             <input
                                 type="text"
-                                className="form-control"
+                                className={`form-control ${styles.empFormField}`}
                                 placeholder="Enter your mobile number"
                                 name="mobNo"
                                 value={mobNo}
@@ -101,12 +108,13 @@ export default function EditEmployee() {
 
                         <button
                             type="submit"
-                            className="btn btn-outline-success"
+                            className={`btn ${styles.Btn}`}
+                            style={{ marginRight: "40px" }}
                         >
-                            Save
+                            &#10004;
                         </button>
-                        <Link className="btn btn-outline-danger m-2" to="/">
-                            Cancel
+                        <Link className={`btn m-2 ${styles.Btn}`} to="/">
+                            &#10006;
                         </Link>
                     </form>
                 </div>
