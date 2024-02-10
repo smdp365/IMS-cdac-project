@@ -75,7 +75,7 @@ export default function ShowAllEmployee() {
                         </thead>
                         <tbody>
                             {employees.map((employee, index) => (
-                                <tr>
+                                <tr key={employee.id}>
                                     <th
                                         scope="row"
                                         key={index}
@@ -83,7 +83,10 @@ export default function ShowAllEmployee() {
                                     >
                                         {index + 1}
                                     </th>
-                                    <td className={`${styles.tableRow}`}>
+                                    <td
+                                        className={`${styles.tableRow}`}
+                                        key={employee.id}
+                                    >
                                         {employee.id}
                                     </td>
                                     <td className={`${styles.tableRow}`}>
