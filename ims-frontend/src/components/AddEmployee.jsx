@@ -1,30 +1,24 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
 import styles from "../css/AddEmployee.module.css";
 
 export default function AddEmployee() {
     let navigate = useNavigate();
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm();
 
-    //store employee information inside the state
-    const [employee, setEmployee] = useState({
-        firstName: "",
-        lastName: "",
-        email: "",
-        mobNo: "",
-    });
-
-    const { firstName, lastName, email, mobNo } = employee;
-
-    const onInputChange = (evt) => {
-        setEmployee({ ...employee, [evt.target.name]: evt.target.value });
-    };
-
-    const onSubmitFun = async (evt) => {
-        evt.preventDefault();
-
-        await axios.post("http://localhost:8080/employee", employee);
-        navigate("/");
+    const onSubmitFun = async (data) => {
+        try {
+            await axios.post("http://localhost:8080/employee", data);
+            navigate("/");
+        } catch (error) {
+            console.error("Error submitting form:", error);
+        }
     };
 
     return (
@@ -35,65 +29,101 @@ export default function AddEmployee() {
                 >
                     <h2 className="text-center m-3">Register Employee</h2>
                     <hr />
-                    <form onSubmit={(evt) => onSubmitFun(evt)}>
+                    <form onSubmit={handleSubmit(onSubmitFun)}>
                         <div className={`mb-3`}>
-                            <lable
+                            <label
                                 htmlFor="firstName"
-                                className="form-lable"
-                            ></lable>
+                                className="form-label"
+                            ></label>
                             <input
                                 type="text"
-                                className={`form-control ${styles.empFormField}`}
+                                className={`form-control ${
+                                    styles.empFormField
+                                } ${errors.firstName ? "is-invalid" : ""}`}
                                 placeholder="Enter first name"
-                                name="firstName"
-                                value={firstName}
-                                onChange={(evt) => onInputChange(evt)}
+                                {...register("firstName", {
+                                    required: "First name is required",
+                                })}
                             />
+                            {errors.firstName && (
+                                <div className="invalid-feedback">
+                                    {errors.firstName.message}
+                                </div>
+                            )}
                         </div>
 
                         <div className={`mb-3 `}>
-                            <lable
+                            <label
                                 htmlFor="lastName"
-                                className="form-lable"
-                            ></lable>
+                                className="form-label"
+                            ></label>
                             <input
                                 type="text"
-                                className={`form-control ${styles.empFormField}`}
+                                className={`form-control ${
+                                    styles.empFormField
+                                } ${errors.lastName ? "is-invalid" : ""}`}
                                 placeholder="Enter last name"
-                                name="lastName"
-                                value={lastName}
-                                onChange={(evt) => onInputChange(evt)}
+                                {...register("lastName", {
+                                    required: "Last name is required",
+                                })}
                             />
+                            {errors.lastName && (
+                                <div className="invalid-feedback">
+                                    {errors.lastName.message}
+                                </div>
+                            )}
                         </div>
 
                         <div className={`mb-3 `}>
-                            <lable
+                            <label
                                 htmlFor="email"
-                                className="form-lable"
-                            ></lable>
+                                className="form-label"
+                            ></label>
                             <input
                                 type="text"
-                                className={`form-control ${styles.empFormField}`}
+                                className={`form-control ${
+                                    styles.empFormField
+                                } ${errors.email ? "is-invalid" : ""}`}
                                 placeholder="Enter email address"
-                                name="email"
-                                value={email}
-                                onChange={(evt) => onInputChange(evt)}
+                                {...register("email", {
+                                    required: "Email is required",
+                                    pattern: {
+                                        value: /^\S+@\S+$/i,
+                                        message: "Invalid email format",
+                                    },
+                                })}
                             />
+                            {errors.email && (
+                                <div className="invalid-feedback">
+                                    {errors.email.message}
+                                </div>
+                            )}
                         </div>
 
                         <div className={`mb-3 `}>
-                            <lable
+                            <label
                                 htmlFor="mobNo"
-                                className="form-lable"
-                            ></lable>
+                                className="form-label"
+                            ></label>
                             <input
                                 type="text"
-                                className={`form-control ${styles.empFormField}`}
+                                className={`form-control ${
+                                    styles.empFormField
+                                } ${errors.mobNo ? "is-invalid" : ""}`}
                                 placeholder="Enter mobile number"
-                                name="mobNo"
-                                value={mobNo}
-                                onChange={(evt) => onInputChange(evt)}
+                                {...register("mobNo", {
+                                    required: "Mobile number is required",
+                                    pattern: {
+                                        value: /^\d{10}$/,
+                                        message: "Invalid mobile number",
+                                    },
+                                })}
                             />
+                            {errors.mobNo && (
+                                <div className="invalid-feedback">
+                                    {errors.mobNo.message}
+                                </div>
+                            )}
                         </div>
 
                         <button
