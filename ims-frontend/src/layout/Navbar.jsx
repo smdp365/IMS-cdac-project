@@ -9,32 +9,26 @@ export default function Navbar() {
                 className={`navbar navbar-expand-sm fixed-top shadow ${styles.navbar}`}
             >
                 <div className={`container ${styles.container}`}>
-                    {/* Circular Logo */}
                     <div className={styles.logoContainer}>
-                        {/* <div className={styles.logo}></div> */}
-                        <p className="text-center fs-2">LOGO</p>
+                        <p className="text-center fs-2">VAAS</p>
                     </div>
 
                     <Link className={`navbar-brand ${styles.brand}`} to={"/"}>
                         Inventory Management System
                     </Link>
-                    <button
-                        className="navbar-toggler d-lg-none"
-                        type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#collapsibleNavId"
-                        aria-controls="collapsibleNavId"
-                        aria-expanded="false"
-                        aria-label="Toggle navigation"
-                    >
-                        <span className="navbar-toggler-icon"></span>
-                    </button>
 
                     <Link
                         className={`btn btn-outline-light ${styles.addButton}`}
                         to="/addemployee"
                     >
                         Add Employee
+                    </Link>
+
+                    <Link
+                        className={`btn btn-outline-light ${styles.loginButton}`}
+                        to="/adminlogin"
+                    >
+                        Admin Login
                     </Link>
                 </div>
             </nav>

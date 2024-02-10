@@ -1,0 +1,88 @@
+.container {
+    border: 2px solid #023E8A;
+    border-radius: 10px;
+    display: flex;
+    width: 1000px;
+    margin: 90px auto;
+    height: 600px;
+
+
+}
+
+.left {
+    flex: 1;
+    background-color: #023E8A;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.right {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.imageDiv {
+    border-radius: 10px;
+    /* border: 2px solid red; */
+    width: 400px;
+    height: 300px;
+    color: #ffffff;
+    background-image: url('../assests/img-tab.png');
+    background-size: cover;
+    background-position: center;
+    margin: 20px 0 ;
+}
+
+
+.heading {
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.learnText {
+    color: #ffffff;
+    text-align: center;
+}
+
+.formContainer {
+    border: 2px solid #023E8A;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: #ffffff;
+    width: 80%;
+    text-align: center;
+}
+
+.formHeading {
+    margin-bottom: 20px;
+}
+
+.inputField {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #007bff;
+    border-radius: 5px;
+    margin-bottom: 30px;
+}
+
+.forgotPassword {
+    text-align: right;
+    margin-bottom: 10px;
+}
+
+.loginButton {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}

@@ -6,6 +6,7 @@ import EditEmployee from "./components/EditEmployee";
 import ShowAllEmployee from "./components/ShowAllEmployee";
 import Navbar from "./layout/Navbar";
 import styles from "./css/App.module.css";
+import AdminLogin from "./components/AdminLogin";
 
 function App() {
     return (
@@ -20,6 +21,7 @@ function App() {
                         path="/addemployee"
                         element={<AddEmployee />}
                     />
+                    <Route exact path="/adminlogin" element={<AdminLogin />} />
                     <Route
                         exact
                         path="/editemployee/:id"

@@ -43,6 +43,11 @@ export default function AddEmployee() {
                                 placeholder="Enter first name"
                                 {...register("firstName", {
                                     required: "First name is required",
+                                    pattern: {
+                                        value: /^[A-Za-z]+$/,
+                                        message:
+                                            "Invalid characters. Only letters are allowed.",
+                                    },
                                 })}
                             />
                             {errors.firstName && (
@@ -65,6 +70,11 @@ export default function AddEmployee() {
                                 placeholder="Enter last name"
                                 {...register("lastName", {
                                     required: "Last name is required",
+                                    pattern: {
+                                        value: /^[A-Za-z]+$/,
+                                        message:
+                                            "Invalid characters. Only letters are allowed.",
+                                    },
                                 })}
                             />
                             {errors.lastName && (
@@ -88,8 +98,8 @@ export default function AddEmployee() {
                                 {...register("email", {
                                     required: "Email is required",
                                     pattern: {
-                                        value: /^\S+@\S+$/i,
-                                        message: "Invalid email format",
+                                        value: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
+                                        message: "Invalid email.",
                                     },
                                 })}
                             />
@@ -114,8 +124,9 @@ export default function AddEmployee() {
                                 {...register("mobNo", {
                                     required: "Mobile number is required",
                                     pattern: {
-                                        value: /^\d{10}$/,
-                                        message: "Invalid mobile number",
+                                        value: /^[0-9]{10}$/,
+                                        message:
+                                            "Invalid mobile number. It should be a 10-digit number.",
                                     },
                                 })}
                             />
