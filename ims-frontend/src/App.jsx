@@ -19,6 +19,7 @@ function App() {
           <Route exact path="/adduser" element={<Adduser />} />
           <Route exact path="/edituser/:id" element={<EditUser />} />
           <Route exact path="/viewuser/:id" element={<Viewuser />} />
+          <Route exact path="/register" element={<EmployeeRegister />} />
         </Routes>
       </Router>
     </div>
