@@ -40,32 +40,41 @@ function EmployeeRegistation()
         }
    }
     return (
-        <div>
-        <h2>Registration Page</h2>
+      <div>
+      <h2 className="register-heading"> Employee Registration </h2>
         <form onSubmit={handleSubmit}>
-          <div>
-            <label htmlFor="id">ID:</label>
-            <input type="text" id="id" name="id" value={formData.id} onChange={handleChange} />
+          <div className="col-md-9 register-right">
+            {/* <label htmlFor="id">EMPID:</label> */}
+            <input type="text" placeholder='Empid' required value={formData.id} onChange={handleChange}/>
+                 
           </div>
-          <div>
-            <label htmlFor="name">Name:</label>
-            <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} />
+          <div className='input-box'>
+            {/* <label htmlFor="name">EMPNAME:</label> */}
+            <input type="text" placeholder='Empname' required value={formData.name} onChange={handleChange} />
           </div>
-          <div>
-            <label htmlFor="mobile">Mobile No:</label>
-            <input type="text" id="mobile" name="mobile" value={formData.mobile} onChange={handleChange} />
+          <div className='input-box'>
+            {/* <label htmlFor="mobile">Mobile No:</label> */}
+            <input type="text" placeholder='Mobile No' required value={formData.mobile} onChange={handleChange} />
           </div>
-          <div>
-            <label htmlFor="email">Email:</label>
+          <div className='input-box'>
+            {/* <label htmlFor="email">Email:</label> */}
             <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} />
+            <FaUser className='icon'/> 
           </div>
-          <div>
-            <label htmlFor="password">Password:</label>
-            <input type="password" id="password" name="password" value={formData.password} onChange={handleChange} />
+          <div className='input-box'>
+            {/* <label htmlFor="password">Password:</label> */}
+            <input type="password" placeholder='Password' required  value={formData.password} onChange={handleChange} />
+            <FaLock className='icon'/>
           </div>
           <button type="submit">Register</button>
+          <div className='register-link'>
+                <p>Do you already have an account?<a href="#">Login</a></p>
+            </div>
         </form>
       </div>
-    );
+      
+     );
   }
   
+  export default EmployeeRegister;
+   
