@@ -1,0 +1,47 @@
+.container{
+    margin-top: 1%;
+    width: 99%;
+}
+
+.firstRowCol{
+    background-color: #023E8A;
+    color: #FFFFFF;
+    height: 100%;
+    padding: 5%;
+    text-align: center;
+}
+
+.youDemand{
+    text-align: right;
+    margin-top: 2%;
+    margin-right: 15%;
+    
+}
+
+
+.secondRowCol{
+    background-color: #FFFFFF;
+    height: 100%;
+    padding: 2%;
+}
+
+.secondRowColCertificate{
+    width: 200px;
+    height: 200px;
+    background-color: #D4DEFB;
+}
+
+
+.thirdRowCol{
+    padding: 1%;
+    height: 100%;
+    background-color: #FFFFFF;
+    color: #FFFFFF;
+}
+
+.thirdRowColProduct{
+    width: 200px;
+    height: 200px;
+    background-color: #D4DEFB;
+
+}

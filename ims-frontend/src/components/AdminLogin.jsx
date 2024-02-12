@@ -3,20 +3,15 @@ import styles from "../css/AdminLogin.module.css";
 
 const AdminLogin = () => {
     return (
-        <div className={`${styles.container}`}>
-            <div className={`${styles.left}`}>
+        <div className={`${styles.container} row`}>
+            <div className={`${styles.left} col-sm-12 col-lg-6`}>
                 <h2 className={styles.heading}>Inventory Management System</h2>
-                <div className={styles.imageDiv}>
-                    {/* <img
-                        src="IMS-cdac-project/ims-frontend/src/assests/img-tab.png"
-                        alt="img-tab.png"
-                    /> */}
-                </div>
+                <div className={styles.imageDiv}></div>
                 <p className={styles.learnText}>
                     Learn how to manage inventory now
                 </p>
             </div>
-            <div className={styles.right}>
+            <div className={`${styles.right} col-sm-12 col-lg-6`}>
                 <div className={styles.formContainer}>
                     <h2 className={styles.formHeading}>Admin Login</h2>
                     <form>

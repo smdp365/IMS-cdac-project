@@ -6,7 +6,7 @@ export default function Navbar() {
     return (
         <div>
             <nav
-                className={`navbar navbar-expand-lg fixed-top shadow ${styles.navbar}`}
+                className={`navbar navbar-expand-lg shadow ${styles.navbar}`}
             >
                 <div className={`container ${styles.container}`}>
                     <div className={`navbar-brand ${styles.logoContainer}`}>
