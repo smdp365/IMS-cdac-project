@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import styles from "../css/ShowAllEmployee.module.css";
+import styles from "../css/Employee.module.css";
 
-export default function ShowAllEmployee() {
+export default function Employee() {
     const [employees, setEmployees] = useState([]);
     // const { id } = useParams();
 

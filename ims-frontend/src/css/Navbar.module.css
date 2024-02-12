@@ -48,3 +48,14 @@
     border: 2px solid #ffffff;
   }
 
+
+  .navBtn{
+    color: #ffffff;
+    font-size: 15px;
+    margin-right: 5px;
+  }
+
+  .navBtn:hover{
+    color: #ffffff;
+    border: 1px solid #ffffff;
+  }

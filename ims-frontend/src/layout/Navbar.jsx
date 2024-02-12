@@ -5,9 +5,7 @@ import styles from "../css/Navbar.module.css";
 export default function Navbar() {
     return (
         <div>
-            <nav
-                className={`navbar navbar-expand-lg shadow ${styles.navbar}`}
-            >
+            <nav className={`navbar navbar-expand-lg shadow ${styles.navbar}`}>
                 <div className={`container ${styles.container}`}>
                     <div className={`navbar-brand ${styles.logoContainer}`}>
                         <p className="text-center fs-2">VAAS</p>
@@ -39,21 +37,66 @@ export default function Navbar() {
                     <div className="collapse navbar-collapse" id="navbarNav">
                         <ul className="navbar-nav ms-auto">
                             <li className="nav-item">
-                                <Link
+                                {/* <Link
                                     className={`btn btn-outline-light ${styles.addButton}`}
                                     to="/addemployee"
                                 >
                                     Add Employee
+                                </Link> */}
+                                <Link className={`btn ${styles.navBtn}`} to="/">
+                                    Home
+                                </Link>
+                                <Link
+                                    className={`btn ${styles.navBtn}`}
+                                    to="/employee"
+                                >
+                                    Employee
+                                </Link>
+
+                                <Link
+                                    className={`btn ${styles.navBtn}`}
+                                    to="/products"
+                                >
+                                    Products
+                                </Link>
+
+                                <Link
+                                    className={`btn ${styles.navBtn}`}
+                                    to="/sales"
+                                >
+                                    Sales
+                                </Link>
+
+                                <Link
+                                    className={`btn ${styles.navBtn}`}
+                                    to="/aboutus"
+                                >
+                                    About us
                                 </Link>
                             </li>
-                            <li className="nav-item">
+
+                            <Link
+                                className={`btn ${styles.navBtn}`}
+                                to="/contactus"
+                            >
+                                Contact us
+                            </Link>
+
+                            <Link
+                                className={`btn ${styles.navBtn}`}
+                                to="/login"
+                            >
+                                Login/Signup
+                            </Link>
+
+                            {/* <li className="nav-item">
                                 <Link
                                     className={`btn btn-outline-light ${styles.loginButton}`}
                                     to="/adminlogin"
                                 >
                                     Admin Login
                                 </Link>
-                            </li>
+                            </li> */}
                         </ul>
                     </div>
                 </div>
