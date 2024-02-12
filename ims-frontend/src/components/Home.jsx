@@ -1,79 +1,71 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import { Link, useParams } from "react-router-dom";
+import styles from "../css/Home.module.css";
 
 export default function Home() {
-  const [users, setUsers] = useState([]);
-  const { id } = useParams();
+    return (
+        <div className={`${styles.container}`}>
+            {/* first row */}
+            <div className={`${styles.firstRow} row`}>
+                <div className={`${styles.firstRowCol} col-sm-12`}>
+                    <h4>
+                        Everyone is a buyer, everyone's a potential purchaser
+                        and everyone's a potential vendor.
+                    </h4>
+                    <p className={`${styles.youDemand}`}>
+                        - You demand : We supply
+                    </p>
+                </div>
+            </div>
 
-  //everytime the page is loaded this part will be shown on the page
-  useEffect(() => {
-    loadUsers();
-  }, []);
-
-  const loadUsers = async () => {
-    const result = await axios.get("http://localhost:8080/allusers");
-    setUsers(result.data);
-  };
-
-  const deleteUser = async (id) => {
-    await axios.delete(`http://localhost:8080/user/${id}`);
-    loadUsers();
-  };
-
-  return (
-    <div className="container">
-      <div className="py-4">
-        <div className="table-responsive">
-          <table className="table table-success shadow">
-            <thead>
-              <tr>
-                <th scope="col">S.No.</th>
-                <th scope="col">ID</th>
-                <th scope="col">First Name</th>
-                <th scope="col">Last Name</th>
-                <th scope="col">Email</th>
-                <th scope="col">Mobile no.</th>
-                <th scope="col">Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {users.map((user, index) => (
-                <tr>
-                  <th scope="row" key={index}>
-                    {index + 1}
-                  </th>
-                  <td>{user.id}</td>
-                  <td>{user.firstName}</td>
-                  <td>{user.lastName}</td>
-                  <td>{user.email}</td>
-                  <td>{user.mobNo}</td>
-                  <td>
-                    <Link
-                      className="btn btn-success mx-2"
-                      to={`/viewUser/${user.id}`}
+            {/* second row */}
+            <div className={`${styles.secondRow} row`}>
+                <div className={`${styles.secondRowCol} col-sm-12`}>
+                    <h3 className={`${styles.secondRowColHeading}`}>
+                        Certification & Awards
+                    </h3>
+                    <div
+                        style={{
+                            display: "flex",
+                            justifyContent: "space-around",
+                            marginTop: "30px",
+                        }}
                     >
-                      Detail
-                    </Link>
-                    <Link
-                      className="btn btn-outline-primary mx-2"
-                      to={`/editUser/${user.id}`}
+                        <div
+                            className={`${styles.secondRowColCertificate}`}
+                        ></div>
+                        <div
+                            className={`${styles.secondRowColCertificate}`}
+                        ></div>
+                        <div
+                            className={`${styles.secondRowColCertificate}`}
+                        ></div>
+                        <div
+                            className={`${styles.secondRowColCertificate}`}
+                        ></div>
+                    </div>
+                </div>
+            </div>
+
+            {/* third row */}
+            <div className="row" style={{ backgroundColor: "#023E8A", color: "#FFFFFF", padding:"2%", height:"100px" }}>
+                <h3>Our Products</h3>
+            </div>
+            <div className={`${styles.thirdRow} row`}>
+                <div className={`${styles.thirdRowCol} col-sm-12`}>
+                    <div
+                        style={{
+                            display: "flex",
+                            justifyContent: "space-around",
+                            marginTop: "20px",
+                        }}
+                        className={`${styles.forthRowCol} col-sm-12`}
                     >
-                      Edit
-                    </Link>
-                    <button
-                      className="btn btn-danger mx-2"
-                      onClick={() => deleteUser(user.id)}
-                    >
-                      Delete
-                    </button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+                        <div className={`${styles.thirdRowColProduct}`}></div>
+                        <div className={`${styles.thirdRowColProduct}`}></div>
+                        <div className={`${styles.thirdRowColProduct}`}></div>
+                        <div className={`${styles.thirdRowColProduct}`}></div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  );
+    );
 }

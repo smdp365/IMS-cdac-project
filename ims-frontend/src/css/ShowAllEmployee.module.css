@@ -1,0 +1,28 @@
+/* #023E8A(primary color), #D4DEFB(secondary button), #FFFFFF(background button text), #333333(text icon) */
+
+.mainContainer{
+    /* margin-top: %; */
+}
+
+.tableHeading{
+    background-color: #023E8A !important;
+    color: #ffffff !important;
+}
+
+.tableRow{
+    background-color: #ffffff !important;
+}
+
+.Btn{
+    /* border: 2px solid red; */
+    width: 40px;
+    height: 40px;
+    font-size: 25px;
+    padding: 0px;
+    color: #023E8A !important;
+    font-weight: bold;
+}
+
+.Btn:hover{
+    border: 1px solid #023E8A;
+}
