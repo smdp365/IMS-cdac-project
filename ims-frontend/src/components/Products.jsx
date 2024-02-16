@@ -1,32 +1,30 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import styles from "../css/Products.module.css";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import styles from "../css/Employee.module.css";
 
-export default function Employee() {
-    const [employees, setEmployees] = useState([]);
-    // const { id } = useParams();
+export default function Products() {
+    const [products, setProducts] = useState([]);
 
-    //everytime the page is loaded this part will be shown on the page
     useEffect(() => {
-        loadEmployees();
+        loadProducts();
     }, []);
 
-    const loadEmployees = async () => {
-        const result = await axios.get("http://localhost:8080/allemployees");
-        setEmployees(result.data);
+    const loadProducts = async () => {
+        const result = await axios.get("http://localhost:8080/allproduct");
+        setProducts(result.data);
     };
 
-    const deleteEmployee = async (id) => {
-        await axios.delete(`http://localhost:8080/employee/${id}`);
-        loadEmployees();
+    const deleteProduct = async (id) => {
+        await axios.delete(`http://localhost:8080/product/${id}`);
+        loadProducts();
     };
 
     return (
         <>
             <div className={`${styles.sideBar}`}>
-                <Link className={`btn ${styles.addButton}`} to="/addemployee">
-                    Add Employee
+                <Link className={`btn ${styles.addButton}`} to="/addproduct">
+                    Add Product
                 </Link>
             </div>
 
@@ -52,25 +50,25 @@ export default function Employee() {
                                         className={`${styles.tableHeading}`}
                                         scope="col"
                                     >
-                                        First Name
+                                        Product Name
                                     </th>
                                     <th
                                         className={`${styles.tableHeading}`}
                                         scope="col"
                                     >
-                                        Last Name
+                                        Unit Price
                                     </th>
                                     <th
                                         className={`${styles.tableHeading}`}
                                         scope="col"
                                     >
-                                        Email
+                                        Quantity
                                     </th>
                                     <th
                                         className={` ${styles.tableHeading}`}
                                         scope="col"
                                     >
-                                        Mobile no.
+                                        Category Id
                                     </th>
                                     <th
                                         className={` ${styles.tableHeading}`}
@@ -81,8 +79,8 @@ export default function Employee() {
                                 </tr>
                             </thead>
                             <tbody>
-                                {employees.map((employee, index) => (
-                                    <tr key={employee.id}>
+                                {products.map((product, index) => (
+                                    <tr key={product.id}>
                                         <th
                                             scope="row"
                                             key={index}
@@ -92,39 +90,39 @@ export default function Employee() {
                                         </th>
                                         <td
                                             className={`${styles.tableRow}`}
-                                            key={employee.id}
+                                            key={product.id}
                                         >
-                                            {employee.id}
+                                            {product.id}
                                         </td>
                                         <td className={`${styles.tableRow}`}>
-                                            {employee.firstName}
+                                            {product.productName}
                                         </td>
                                         <td className={`${styles.tableRow}`}>
-                                            {employee.lastName}
+                                            {product.pricePerProduct}
                                         </td>
                                         <td className={`${styles.tableRow}`}>
-                                            {employee.email}
+                                            {product.quantity}
                                         </td>
                                         <td className={`${styles.tableRow}`}>
-                                            {employee.mobNo}
+                                            {product.categoryId}
                                         </td>
                                         <td className={`${styles.tableRow}`}>
                                             <Link
                                                 className={`btn mx-2 ${styles.Btn}`}
-                                                to={`/viewemployee/${employee.id}`}
+                                                to={`/viewproduct/${product.id}`}
                                             >
                                                 &#x2630;
                                             </Link>
                                             <Link
                                                 className={`btn mx-2 ${styles.Btn}`}
-                                                to={`/editemployee/${employee.id}`}
+                                                to={`/editproduct/${product.id}`}
                                             >
                                                 &#9998;
                                             </Link>
                                             <button
                                                 className={`btn mx-2 ${styles.Btn}`}
                                                 onClick={() =>
-                                                    deleteEmployee(employee.id)
+                                                    deleteProduct(product.id)
                                                 }
                                             >
                                                 &#10006;

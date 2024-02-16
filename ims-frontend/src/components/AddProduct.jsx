@@ -2,9 +2,9 @@ import axios from "axios";
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import styles from "../css/AddEmployee.module.css";
+import styles from "../css/AddProduct.module.css";
 
-export default function AddEmployee() {
+export default function AddProduct() {
     let navigate = useNavigate();
     const {
         register,
@@ -14,8 +14,8 @@ export default function AddEmployee() {
 
     const onSubmitFun = async (data) => {
         try {
-            await axios.post("http://localhost:8080/employee", data);
-            navigate("/employee");
+            await axios.post("http://localhost:8080/product", data);
+            navigate("/products");
         } catch (error) {
             console.error("Error submitting form:", error);
         }
@@ -27,22 +27,22 @@ export default function AddEmployee() {
                 <div
                     className={`col-md-6 offset-md-3 border rounded p-4 mt-2 shadow ${styles.empForm}`}
                 >
-                    <h2 className="text-center m-3">Register Employee</h2>
+                    <h2 className="text-center m-3">Add Product</h2>
                     <hr />
                     <form onSubmit={handleSubmit(onSubmitFun)}>
                         <div className={`mb-3`}>
                             <label
-                                htmlFor="firstName"
+                                htmlFor="productName"
                                 className="form-label"
                             ></label>
                             <input
                                 type="text"
                                 className={`form-control ${
                                     styles.empFormField
-                                } ${errors.firstName ? "is-invalid" : ""}`}
-                                placeholder="Enter first name"
-                                {...register("firstName", {
-                                    required: "First name is required",
+                                } ${errors.productName ? "is-invalid" : ""}`}
+                                placeholder="Enter product name"
+                                {...register("productName", {
+                                    required: "Product name is required",
                                     pattern: {
                                         value: /^[A-Za-z]+$/,
                                         message:
@@ -50,89 +50,89 @@ export default function AddEmployee() {
                                     },
                                 })}
                             />
-                            {errors.firstName && (
+                            {errors.productName && (
                                 <div className="invalid-feedback">
-                                    {errors.firstName.message}
+                                    {errors.productName.message}
                                 </div>
                             )}
                         </div>
 
                         <div className={`mb-3 `}>
                             <label
-                                htmlFor="lastName"
+                                htmlFor="pricePerProduct"
                                 className="form-label"
                             ></label>
                             <input
                                 type="text"
                                 className={`form-control ${
                                     styles.empFormField
-                                } ${errors.lastName ? "is-invalid" : ""}`}
-                                placeholder="Enter last name"
-                                {...register("lastName", {
-                                    required: "Last name is required",
+                                } ${
+                                    errors.pricePerProduct ? "is-invalid" : ""
+                                }`}
+                                placeholder="Enter Price Per Item"
+                                {...register("pricePerProduct", {
+                                    required: "Unit price is required",
                                     pattern: {
-                                        value: /^[A-Za-z]+$/,
-                                        message:
-                                            "Invalid characters. Only letters are allowed.",
+                                        value: /^\d+$/,
+                                        message: "Invalid value",
                                     },
                                 })}
                             />
-                            {errors.lastName && (
+                            {errors.pricePerProduct && (
                                 <div className="invalid-feedback">
-                                    {errors.lastName.message}
+                                    {errors.pricePerProduct.message}
                                 </div>
                             )}
                         </div>
 
                         <div className={`mb-3 `}>
                             <label
-                                htmlFor="email"
+                                htmlFor="quantity"
                                 className="form-label"
                             ></label>
                             <input
                                 type="text"
                                 className={`form-control ${
                                     styles.empFormField
-                                } ${errors.email ? "is-invalid" : ""}`}
-                                placeholder="Enter email address"
-                                {...register("email", {
-                                    required: "Email is required",
+                                } ${errors.quantity ? "is-invalid" : ""}`}
+                                placeholder="Enter quantity "
+                                {...register("quantity", {
+                                    required: "Quantity is required",
                                     pattern: {
-                                        value: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
-                                        message: "Invalid email.",
+                                        value: /^\d+$/,
+                                        message: "Invalid value.",
                                     },
                                 })}
                             />
-                            {errors.email && (
+                            {errors.quantity && (
                                 <div className="invalid-feedback">
-                                    {errors.email.message}
+                                    {errors.quantity.message}
                                 </div>
                             )}
                         </div>
 
                         <div className={`mb-3 `}>
                             <label
-                                htmlFor="mobNo"
+                                htmlFor="categoryId"
                                 className="form-label"
                             ></label>
                             <input
                                 type="text"
                                 className={`form-control ${
                                     styles.empFormField
-                                } ${errors.mobNo ? "is-invalid" : ""}`}
-                                placeholder="Enter mobile number"
-                                {...register("mobNo", {
-                                    required: "Mobile number is required",
+                                } ${errors.categoryId ? "is-invalid" : ""}`}
+                                placeholder="Enter Category Id"
+                                {...register("categoryId", {
+                                    required: "Category Id is required",
                                     pattern: {
-                                        value: /^[0-9]{10}$/,
-                                        message:
-                                            "Invalid mobile number. It should be a 10-digit number.",
+                                        value: /^\d+$/,
+                                        message: "Invalid category",
                                     },
                                 })}
                             />
-                            {errors.mobNo && (
+                            {errors.categoryId && (
                                 <div className="invalid-feedback">
-                                    {errors.mobNo.message}
+                                    {errors.categoryId.message}
                                 </div>
                             )}
                         </div>
@@ -141,13 +141,13 @@ export default function AddEmployee() {
                             type="submit"
                             className={`btn ${styles.Btn}`}
                             style={{ marginRight: "40px" }}
-                            to="/employee"
+                            // to="/products"
                         >
                             &#10004;
                         </button>
                         <Link
                             className={`btn m-2 ${styles.Btn}`}
-                            to="/employee"
+                            to="/products"
                         >
                             &#10006;
                         </Link>

@@ -37,12 +37,6 @@ export default function Navbar() {
                     <div className="collapse navbar-collapse" id="navbarNav">
                         <ul className="navbar-nav ms-auto">
                             <li className="nav-item">
-                                {/* <Link
-                                    className={`btn btn-outline-light ${styles.addButton}`}
-                                    to="/addemployee"
-                                >
-                                    Add Employee
-                                </Link> */}
                                 <Link className={`btn ${styles.navBtn}`} to="/">
                                     Home
                                 </Link>
@@ -84,7 +78,7 @@ export default function Navbar() {
 
                             <Link
                                 className={`btn ${styles.navBtn}`}
-                                to="/login"
+                                to="/adminlogin"
                             >
                                 Login/Signup
                             </Link>

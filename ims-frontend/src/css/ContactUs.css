@@ -1,0 +1,46 @@
+/* .head{
+    border: 5px solid black;
+    width: 500px;
+    height: 500px;
+    text-align: center;
+    background-color: skyblue;
+    margin: auto;
+} */
+
+
+.bg-image{
+    height: 83vh; /* Adjust the height as needed */
+    background-color: #191919 !important;
+    opacity: 0.5;
+    position: relative;
+}
+.contacthero{
+    color: #333;
+    font-weight: bold;
+    font-size: 80px;
+   
+}
+
+.text-on-image {
+    position: absolute;
+    top: 50%; /* Center the text vertically */
+    left: 50%; /* Center the text horizontally */
+    transform: translate(-50%, -50%); /* Center the text precisely */
+    color: white; /* Text color */
+    text-align: center; /* Center-align the text */
+    padding: 20px; /* Add padding for better readability */
+  }
+
+.form-control {
+    display: block;
+    width: 100%;
+}
+
+.contacthead ,.contactinfo{
+
+    font-weight: bold;
+}
+
+.contactright{
+    margin-left: 30px;
+}
