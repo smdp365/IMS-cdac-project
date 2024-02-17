@@ -2,9 +2,9 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import styles from "../css/EditEmployee.module.css";
+import styles from "../css/EditProduct.module.css";
 
-export default function EditEmployee() {
+export default function EditProduct() {
     let navigate = useNavigate();
     const { id } = useParams();
     const {
@@ -14,39 +14,39 @@ export default function EditEmployee() {
         formState: { errors },
     } = useForm();
 
-    const [employee, setEmployee] = useState({
-        firstName: "",
-        lastName: "",
-        email: "",
-        mobNo: "",
+    const [product, setProduct] = useState({
+        productName: "",
+        pricePerProduct: "",
+        quantity: "",
+        categoryId: "",
     });
 
     useEffect(() => {
-        loadEmployee();
+        loadProduct();
     }, []);
 
     const onInputChange = (evt) => {
-        setEmployee({ ...employee, [evt.target.name]: evt.target.value });
+        setProduct({ ...product, [evt.target.name]: evt.target.value });
     };
 
     const onSubmit = async (data) => {
         try {
-            await axios.put(`http://localhost:8080/employee/${id}`, data);
-            navigate("/employee");
+            await axios.put(`http://localhost:8080/product/${id}`, data);
+            navigate("/products");
         } catch (error) {
-            console.error("Error updating employee:", error);
+            console.error("Error updating product:", error);
         }
     };
 
-    const loadEmployee = async () => {
-        const result = await axios.get(`http://localhost:8080/employee/${id}`);
-        setEmployee(result.data);
+    const loadProduct = async () => {
+        const result = await axios.get(`http://localhost:8080/product/${id}`);
+        setProduct(result.data);
 
-        // Set form values after loading employee data
-        setValue("firstName", result.data.firstName);
-        setValue("lastName", result.data.lastName);
-        setValue("email", result.data.email);
-        setValue("mobNo", result.data.mobNo);
+        // Set form values after loading product data
+        setValue("productName", result.data.productName);
+        setValue("pricePerProduct", result.data.pricePerProduct);
+        setValue("quantity", result.data.quantity);
+        setValue("categoryId", result.data.categoryId);
     };
 
     return (
@@ -55,120 +55,119 @@ export default function EditEmployee() {
                 <div
                     className={`col-md-6 offset-md-3 border rounded p-4 mt-2 shadow ${styles.empForm}`}
                 >
-                    <h2 className="text-center m-3">Edit Employee</h2>
+                    <h2 className="text-center m-3">Edit Product</h2>
                     <hr />
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <div className="mb-3">
                             <label
-                                htmlFor="firstName"
+                                htmlFor="productName"
                                 className="form-label"
                             ></label>
                             <input
                                 type="text"
                                 className={`form-control ${
                                     styles.empFormField
-                                } ${errors.firstName ? "is-invalid" : ""}`}
-                                placeholder="Enter your first name"
-                                name="firstName"
-                                {...register("firstName", {
-                                    required: "First name is required",
+                                } ${errors.productName ? "is-invalid" : ""}`}
+                                placeholder="Enter product name"
+                                name="productName"
+                                {...register("productName", {
+                                    required: "Product name is required",
                                     pattern: {
                                         value: /^[A-Za-z ]+$/,
-                                        message:
-                                            "Invalid characters. Only letters are allowed.",
+                                        message: "Invalid Product",
                                     },
                                 })}
                                 onChange={(evt) => onInputChange(evt)}
                             />
-                            {errors.firstName && (
+                            {errors.productName && (
                                 <div className="invalid-feedback">
-                                    {errors.firstName.message}
+                                    {errors.productName.message}
                                 </div>
                             )}
                         </div>
 
                         <div className="mb-3">
                             <label
-                                htmlFor="lastName"
+                                htmlFor="pricePerProduct"
                                 className="form-label"
                             ></label>
                             <input
                                 type="text"
                                 className={`form-control ${
                                     styles.empFormField
-                                } ${errors.lastName ? "is-invalid" : ""}`}
-                                placeholder="Enter your last name"
-                                name="lastName"
-                                {...register("lastName", {
-                                    required: "Last name is required",
+                                } ${
+                                    errors.pricePerProduct ? "is-invalid" : ""
+                                }`}
+                                placeholder="Enter Price Per Product"
+                                name="pricePerProduct"
+                                {...register("pricePerProduct", {
+                                    required: "Unit price is required",
                                     pattern: {
-                                        value: /^[A-Za-z ]+$/,
-                                        message:
-                                            "Invalid characters. Only letters are allowed.",
+                                        value: /^\d+$/,
+                                        message: "Invalid Value",
                                     },
                                 })}
                                 onChange={(evt) => onInputChange(evt)}
                             />
-                            {errors.lastName && (
+                            {errors.pricePerProduct && (
                                 <div className="invalid-feedback">
-                                    {errors.lastName.message}
+                                    {errors.pricePerProduct.message}
                                 </div>
                             )}
                         </div>
 
                         <div className="mb-3">
                             <label
-                                htmlFor="email"
+                                htmlFor="quantity"
                                 className="form-label"
                             ></label>
                             <input
                                 type="text"
                                 className={`form-control ${
                                     styles.empFormField
-                                } ${errors.email ? "is-invalid" : ""}`}
-                                placeholder="Enter your email address"
-                                name="email"
-                                {...register("email", {
-                                    required: "Email is required",
+                                } ${errors.quantity ? "is-invalid" : ""}`}
+                                placeholder="Enter Quantity"
+                                name="quantity"
+                                {...register("quantity", {
+                                    required: "Quantity is required",
                                     pattern: {
-                                        value: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
-                                        message: "Invalid email.",
+                                        value: /^\d+$/,
+                                        message: "Invalid Quantity.",
                                     },
                                 })}
                                 onChange={(evt) => onInputChange(evt)}
                             />
-                            {errors.email && (
+                            {errors.quantity && (
                                 <div className="invalid-feedback">
-                                    {errors.email.message}
+                                    {errors.quantity.message}
                                 </div>
                             )}
                         </div>
 
                         <div className="mb-3">
                             <label
-                                htmlFor="mobNo"
+                                htmlFor="categoryId"
                                 className="form-label"
                             ></label>
                             <input
                                 type="text"
                                 className={`form-control ${
                                     styles.empFormField
-                                } ${errors.mobNo ? "is-invalid" : ""}`}
-                                placeholder="Enter your mobile number"
-                                name="mobNo"
-                                {...register("mobNo", {
-                                    required: "Mobile number is required",
+                                } ${errors.categoryId ? "is-invalid" : ""}`}
+                                placeholder="Enter Category Id"
+                                name="categoryId"
+                                {...register("categoryId", {
+                                    required: "Category Id is required",
                                     pattern: {
                                         value: /^\d{10}$/,
-                                        message:
-                                            "Invalid mobile number. It should be a 10-digit number.",
+                                        message: "Invalid Category Id",
                                     },
                                 })}
                                 onChange={(evt) => onInputChange(evt)}
                             />
-                            {errors.mobNo && (
+                            {errors.categoryId && (
                                 <div className="invalid-feedback">
-                                    {errors.mobNo.message}
+                                    {errors.categoryId.message}
                                 </div>
                             )}
                         </div>
@@ -182,7 +181,7 @@ export default function EditEmployee() {
                         </button>
                         <Link
                             className={`btn m-2 ${styles.Btn}`}
-                            to="/employee"
+                            to="/products"
                         >
                             &#10006;
                         </Link>

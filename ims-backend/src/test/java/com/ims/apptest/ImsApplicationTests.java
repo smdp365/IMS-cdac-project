@@ -1,10 +1,10 @@
-package com.shivangi.springpractice.crudspringapp;
+package com.ims.apptest;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class CrudReactSpringAppApplicationTests {
+class ImsApplicationTests {
 
 	@Test
 	void contextLoads() {

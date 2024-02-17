@@ -31,15 +31,7 @@
     color: #ffffff;
   }
   
-  .addButton {
-    background-color: #023e8a;
-    color: #ffffff; 
-    border: 2px solid #ffffff;
-  }
 
-  .addButton:hover{
-    background-color: #ffffff;
-  }
   
 
   .loginButton{
@@ -48,3 +40,14 @@
     border: 2px solid #ffffff;
   }
 
+
+  .navBtn{
+    color: #ffffff;
+    font-size: 15px;
+    margin-right: px;
+  }
+
+  .navBtn:hover{
+    color: #ffffff;
+    border: 1px solid #ffffff;
+  }

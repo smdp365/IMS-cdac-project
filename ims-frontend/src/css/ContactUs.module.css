@@ -1,0 +1,37 @@
+
+.bgImage{
+    height: 83vh; 
+    background-color: #191919 !important;
+    opacity: 0.5;
+    position: relative;
+}
+.contacthero{
+    color: #333;
+    font-weight: bold;
+    font-size: 80px;
+   
+}
+
+.textOnImage {
+    position: absolute;
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    color: white; 
+    text-align: center; 
+    padding: 20px; 
+  }
+
+.formControl {
+    display: block;
+    width: 100%;
+}
+
+.contacthead ,.contactinfo{
+
+    font-weight: bold;
+}
+
+.contactright{
+    margin-left: 30px;
+}

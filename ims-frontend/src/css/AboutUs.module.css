@@ -1,0 +1,8 @@
+.head{
+    border: 2px solid red;
+    width: 500px;
+    height: 500px;
+    text-align: center;
+    background-color: green;
+    margin: auto;
+}

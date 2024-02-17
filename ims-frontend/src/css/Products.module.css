@@ -1,0 +1,64 @@
+/* #023E8A(primary color), #D4DEFB(secondary button), #FFFFFF(background button text), #333333(text icon) */
+
+.mainContainer{
+    /* border: 2px solid goldenrod; */
+    padding: 0;
+    float: right;
+    margin-right: 20px;
+    width: 85%;
+    height: auto;
+}
+
+.sideBar{
+    border: 2px solid #023E8A;
+    width: 170px; 
+    margin: auto; 
+    float: left; 
+    margin-top: 1.8%;
+    border-radius: 10px;
+    margin-left: 20px;
+    padding: 10px;
+    background-color: #ffffff;
+
+  }
+
+.tableHeading{
+    background-color: #023E8A !important;
+    color: #ffffff !important;
+}
+
+.tableRow{
+    background-color: #ffffff !important;
+}
+
+.Btn{
+    width: 40px;
+    height: 40px;
+    font-size: 25px;
+    padding: 0px;
+    color: #023E8A !important;
+    font-weight: bold;
+}
+
+.Btn:hover{
+    border: 1px solid #023E8A;
+}
+
+
+.addButton {
+    background-color: #023e8a;
+    color: #ffffff; 
+    border: 2px solid #023E8A;
+    margin-bottom: 10px;
+    font-weight: 500;
+    width: 100%;
+  }
+
+  .addButton:hover{
+    border: 2px solid #023E8A;
+    background-color:#ffffff;
+    color: #023E8A;
+    font-weight: 500;
+    
+  }
+

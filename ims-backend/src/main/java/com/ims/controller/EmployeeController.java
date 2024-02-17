@@ -33,6 +33,12 @@ public class EmployeeController {
         return employeeRepository.findAll();
     }
 
+//    @GetMapping("/employee/{id}")
+//    ResponseEntity<Employee> getEmployeeById(@PathVariable Long id){
+//        return ResponseEntity.badRequest().body(employeeRepository.findById(id)
+//                .orElseThrow(()->new EmployeeNotFoundException(id)));
+//    }
+
     @GetMapping("/employee/{id}")
     Employee getEmployeeById(@PathVariable Long id){
         return employeeRepository.findById(id)
@@ -60,7 +66,7 @@ public class EmployeeController {
         }
 
         employeeRepository.deleteById(id);
-        return "MySuccessfullMessage: Successfully deleted Employee with id " + id + ".";
+        return "MySuccessfulMessage: Successfully deleted Employee with id " + id + " .";
     }
 
 
