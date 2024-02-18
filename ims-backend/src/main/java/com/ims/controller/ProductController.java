@@ -20,7 +20,7 @@ import java.util.List;
 import static java.util.Objects.requireNonNull;
 
 @RestController
-@CrossOrigin("http://localhost:5173")
+@CrossOrigin("http://localhost:5174")
 public class ProductController {
 	@Autowired
 	private ProductRepository productRepository;

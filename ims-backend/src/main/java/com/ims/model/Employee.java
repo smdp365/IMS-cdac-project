@@ -3,8 +3,10 @@ package com.ims.model;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import lombok.Getter;
 
 @Entity
+@Getter
 public class Employee {
 
     @Id
@@ -25,10 +27,10 @@ public class Employee {
 
     public Employee() {
     }
-
-    public Long getId() {
-        return id;
-    }
+//
+//    public Long getId() {
+//        return id;
+//    }
 
     public String getFirstName() {
         return firstName;

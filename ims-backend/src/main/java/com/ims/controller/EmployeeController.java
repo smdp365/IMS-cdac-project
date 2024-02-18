@@ -9,15 +9,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.ims.exception.EmployeeNotFoundException;
 import com.ims.model.Employee;
 import com.ims.repository.EmployeeRepository;
-
 import java.util.List;
 
 @RestController
-@CrossOrigin("http://localhost:5173")
+@CrossOrigin("http://localhost:5174")
+//@Slf4j
 public class EmployeeController {
 
     @Autowired
@@ -25,6 +24,7 @@ public class EmployeeController {
 
     @PostMapping("/employee")
     Employee addEmployee(@RequestBody Employee newEmployee){
+//    	log.info(newEmployee.getId());
         return employeeRepository.save(newEmployee);
     }
 

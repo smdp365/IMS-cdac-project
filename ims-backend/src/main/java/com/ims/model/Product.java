@@ -9,9 +9,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Getter
-@Setter
-@NoArgsConstructor
+//@Getter
+//@Setter
+//@NoArgsConstructor
 public class Product {
 	@Id
 	@GeneratedValue
@@ -22,6 +22,63 @@ public class Product {
 	private int quantity;
 
 	private Long categoryId;
+
+
+	public Long getId() {
+		return Id;
+	}
+
+
+	public void setId(Long id) {
+		Id = id;
+	}
+
+
+	public String getProductName() {
+		return productName;
+	}
+
+
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
+
+
+	public double getPricePerProduct() {
+		return pricePerProduct;
+	}
+
+
+	public void setPricePerProduct(double pricePerProduct) {
+		this.pricePerProduct = pricePerProduct;
+	}
+
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
+
+	public Long getCategoryId() {
+		return categoryId;
+	}
+
+
+	public void setCategoryId(Long categoryId) {
+		this.categoryId = categoryId;
+	}
+
+
+
+	public Product() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 
 	public Product(Long id, String productName, double pricePerProduct, int quantity, Long categoryId) {
