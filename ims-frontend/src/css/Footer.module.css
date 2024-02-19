@@ -1,0 +1,30 @@
+.firstRow {
+  background-color: #333; 
+  margin-top: 30px;
+  padding-top: 20px;
+}
+.secondRow {
+  justify-content: center;
+  color: #fff;
+}
+
+.logo {
+  color: #fff;
+  margin: 20px;
+}
+
+.fourthRow {
+  justify-content: center;
+  
+}
+
+
+.copyright {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  font-size: 15px;
+  margin-top: 10px;
+  background-color: black;
+  padding: 10px;
+  color: #fff;
+}

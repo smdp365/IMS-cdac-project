@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @CrossOrigin("http://localhost:5173")
-@Slf4j
+//@Slf4j
 public class LoginController {
 
     @Autowired
@@ -23,7 +23,7 @@ public class LoginController {
     @PostMapping("/login")
     ResponseEntity<String> login(@RequestBody Login newLogin){
 //        loginRepository.save(newLogin);
-        log.info("hiiiiiiii {}", newLogin.getEmail());
+//        log.info("hiiiiiiii {}", newLogin.getEmail());
         if(newLogin.getEmail().startsWith("pos")){
             return new ResponseEntity<>( "Login Successful", HttpStatus.OK);
         }else if(newLogin.getEmail().startsWith("neg")){

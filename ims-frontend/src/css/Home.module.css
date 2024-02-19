@@ -1,47 +1,68 @@
-.container{
-    margin-top: 1%;
-    width: 99%;
+.container {
+  margin-top: 1%;
+  width: 99%;
 }
 
-.firstRowCol{
-    background-color: #023E8A;
-    color: #FFFFFF;
-    height: 100%;
-    padding: 5%;
-    text-align: center;
+.firstRowCol {
+  background-color: #023e8a;
+  color: #ffffff;
+  height: 100%;
+  padding: 5%;
+  text-align: center;
 }
 
-.youDemand{
-    text-align: right;
-    margin-top: 2%;
-    margin-right: 15%;
-    
+.youDemand {
+  text-align: right;
+  margin-top: 2%;
+  margin-right: 15%;
+}
+.icon1{
+  color: "#0000FF";
+  margin: "15px";
+  font-size: "40px";
 }
 
+/* .secondRowCol {
+  background-color: #ffffff;
+  height: 100%;
+  padding: 2%;
+} */
 
-.secondRowCol{
-    background-color: #FFFFFF;
-    height: 100%;
-    padding: 2%;
+/* .secondRowColCertificate {
+  width: 200px;
+  height: 200px;
+  background-color: #d4defb;
+} */
+
+.thirdRowCol {
+  padding: 1%;
+  height: 100%;
+  background-color: #ffffff;
+  color: #ffffff;
 }
 
-.secondRowColCertificate{
-    width: 200px;
-    height: 200px;
-    background-color: #D4DEFB;
+.thirdRowColProduct {
+  width: 200px;
+  height: 200px;
+  background-color: #d4defb;
 }
 
-
-.thirdRowCol{
-    padding: 1%;
-    height: 100%;
-    background-color: #FFFFFF;
-    color: #FFFFFF;
+.fourthRow {
+  background-color: #023e8a;
+  padding: 3%;
+}
+.fourthRowColmiddle {
+  padding: 3%;
+  border: #023e8a 2px solid;
+  border-radius: 10%;
+  background-color: #fff;
+}
+.inquireinput .form-control {
+  background-color: #d4defb !important;
 }
 
-.thirdRowColProduct{
-    width: 200px;
-    height: 200px;
-    background-color: #D4DEFB;
-
+.btn-primary {
+  background-color: #023e8a !important;
+  color: #ffffff; /* Text color */
+  padding: 10px 20px;
 }

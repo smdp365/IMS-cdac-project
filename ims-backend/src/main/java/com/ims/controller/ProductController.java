@@ -5,6 +5,9 @@ import com.ims.exception.ProductNotFoundException;
 import com.ims.model.Product;
 import com.ims.repository.ProductCategoryRepository;
 import com.ims.repository.ProductRepository;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -22,6 +25,9 @@ import static java.util.Objects.requireNonNull;
 @RestController
 @CrossOrigin("http://localhost:5173")
 public class ProductController {
+
+	Logger logger = LoggerFactory.getLogger(getClass().getName());
+	
 	@Autowired
 	private ProductRepository productRepository;
 
@@ -29,48 +35,49 @@ public class ProductController {
 	private ProductCategoryRepository productCategoryRepository;
 
 	@PostMapping("/product")
-    Product addProduct(@RequestBody Product newProduct){
+	Product addProduct(@RequestBody Product newProduct) {
 		newProduct.setId(null);
 
-		//validating productCategoryID
+		// validating productCategoryID
 		requireNonNull(newProduct.getCategoryId(), "categoryId is mandatory");
 		productCategoryRepository.findById(newProduct.getCategoryId())
-				.orElseThrow(()->new ProductCategoryNotFoundException(newProduct.getCategoryId()));
-        return productRepository.save(newProduct);
-    }
-	
-	
-	@GetMapping("/allproduct")
-	List<Product> getAllProduct(){
-		return productRepository.findAll();
+				.orElseThrow(() -> new ProductCategoryNotFoundException(newProduct.getCategoryId()));
+		return productRepository.save(newProduct);
 	}
-	
+
+	@GetMapping("/allproduct")
+	List<Product> getAllProduct() {
+		
+		logger.info("Getting all products");
+		
+		List<Product> products = productRepository.findAll();
+		logger.info("Fetched {} products", products.size());
+		return products;
+		
+	}
+
 	@GetMapping("/product/{id}")
 	Product getProductById(@PathVariable Long id) {
-		return productRepository.findById(id)
-				.orElseThrow(()-> new ProductNotFoundException(id));
+		return productRepository.findById(id).orElseThrow(() -> new ProductNotFoundException(id));
 	}
-	
-	
+
 	@PutMapping("/product/{id}")
 	Product updateProduct(@RequestBody Product newProduct, @PathVariable Long id) {
-		return productRepository.findById(id)
-				.map(product->{
-					product.setProductName(newProduct.getProductName());
-					product.setPricePerProduct(newProduct.getPricePerProduct());
-					product.setQuantity(newProduct.getQuantity());
-					product.setCategoryId(newProduct.getCategoryId());
-					return productRepository.save(product);
-				}).orElseThrow(()-> new ProductNotFoundException(id));
+		return productRepository.findById(id).map(product -> {
+			product.setProductName(newProduct.getProductName());
+			product.setPrice(newProduct.getPrice());
+			product.setQuantity(newProduct.getQuantity());
+			product.setCategoryId(newProduct.getCategoryId());
+			return productRepository.save(product);
+		}).orElseThrow(() -> new ProductNotFoundException(id));
 	}
-	
-	
+
 	@DeleteMapping("/product/{id}")
 	String deleteProductCategoryById(@PathVariable Long id) {
-		if(!productRepository.existsById(id)) {
+		if (!productRepository.existsById(id)) {
 			throw new ProductNotFoundException(id);
 		}
-		
+
 		productRepository.deleteById(id);
 		return "MySuccessfulMessage: successfully deleted Product with id" + id + " .";
 	}

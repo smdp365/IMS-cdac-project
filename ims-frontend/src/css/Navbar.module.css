@@ -1,53 +1,47 @@
-
 .navbar {
-    background-color: #023e8a;
+  background-color: #023e8a;
+}
 
-  }
-  
-  .container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  
-  .logoContainer {
-    width: 110px;
-    height: 50px;
-    background-color: #ffffff; 
-    margin-right: 10px;
-  }
-  
-  .logo {
-    width: 100%;
-    height: 100%;
-    background-color: #ffffff; 
-  }
-  
-  .brand {
-    color: #ffffff !important; 
-  }
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 
-  .brand:hover{
-    color: #ffffff;
-  }
-  
+.logoContainer {
+  width: 110px;
+  height: 50px;
+  background-color: #ffffff;
+  margin-right: 10px;
+}
 
-  
+.logo {
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff;
+}
 
-  .loginButton{
-    background-color: #023e8a;
-    color: #ffffff; 
-    border: 2px solid #ffffff;
-  }
+.brand {
+  color: #ffffff !important;
+}
 
+.brand:hover {
+  color: #ffffff;
+}
 
-  .navBtn{
-    color: #ffffff;
-    font-size: 15px;
-    margin-right: px;
-  }
+.loginButton {
+  background-color: #023e8a;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+}
 
-  .navBtn:hover{
-    color: #ffffff;
-    border: 1px solid #ffffff;
-  }
+.navBtn {
+  color: #ffffff;
+  font-size: 15px;
+  margin-right: px;
+}
+
+.navBtn:hover {
+  color: #ffffff;
+  border: 1px solid #ffffff;
+}

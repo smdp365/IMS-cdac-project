@@ -9,9 +9,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Getter
-@Setter
-@NoArgsConstructor
+//@Getter
+//@Setter
+//@NoArgsConstructor
 public class ProductCategory {
 	@Id
 	@GeneratedValue
@@ -26,5 +26,32 @@ public class ProductCategory {
 		this.categoryName = categoryName;
 	}
 
+
+	public Long getCategoryId() {
+		return categoryId;
+	}
+
+
+	public void setCategoryId(Long categoryId) {
+		this.categoryId = categoryId;
+	}
+
+
+	public String getCategoryName() {
+		return categoryName;
+	}
+
+
+	public ProductCategory() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
+	}
+
+	
 
 }
