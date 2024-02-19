@@ -18,7 +18,7 @@ public class Product {
 	private Long Id;
 	@NotBlank(message = "Product Name is mandatory")
 	private String productName;
-	private double pricePerProduct;
+	private double price;
 	private int quantity;
 
 	private Long categoryId;
@@ -43,14 +43,12 @@ public class Product {
 		this.productName = productName;
 	}
 
-
-	public double getPricePerProduct() {
-		return pricePerProduct;
+	public double getPrice() {
+		return price;
 	}
 
-
-	public void setPricePerProduct(double pricePerProduct) {
-		this.pricePerProduct = pricePerProduct;
+	public void setPrice(double pricePerProduct) {
+		this.price = pricePerProduct;
 	}
 
 
@@ -85,7 +83,7 @@ public class Product {
 		super();
 		Id = id;
 		this.productName = productName;
-		this.pricePerProduct = pricePerProduct;
+		this.price = pricePerProduct;
 		this.quantity = quantity;
 		this.categoryId = categoryId;
 	}

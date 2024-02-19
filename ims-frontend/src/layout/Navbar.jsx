@@ -1,11 +1,12 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styles from "../css/Navbar.module.css";
 import { useEmployeeOptionVisibility } from "../utils/flags";
 
 export default function Navbar() {
   const isEmployeeOptionVisible = useEmployeeOptionVisibility();
   console.log("isEmployeeOptionVisible : ", isEmployeeOptionVisible);
+  const navigate = useNavigate();
 
   return (
     <div>
@@ -37,36 +38,54 @@ export default function Navbar() {
 
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav ms-auto">
-              <li className="nav-item">
-                <Link className={`btn ${styles.navBtn}`} to="/">
-                  Home
-                </Link>
-                {isEmployeeOptionVisible && (
-                  <Link className={`btn ${styles.navBtn}`} to="/employee">
-                    Employee
+              <Link className={`btn ${styles.navBtn}`} to="/">
+                Home
+              </Link>
+              {isEmployeeOptionVisible && (
+                <li className="nav-item">
+                  {isEmployeeOptionVisible && (
+                    <Link className={`btn ${styles.navBtn}`} to="/employee">
+                      Employee
+                    </Link>
+                  )}
+
+                  <Link className={`btn ${styles.navBtn}`} to="/products">
+                    Products
                   </Link>
-                )}
 
-                <Link className={`btn ${styles.navBtn}`} to="/products">
-                  Products
-                </Link>
+                  <Link className={`btn ${styles.navBtn}`} to="/sales">
+                    Sales
+                  </Link>
+                </li>
+              )}
 
-                <Link className={`btn ${styles.navBtn}`} to="/sales">
-                  Sales
-                </Link>
-
-                <Link className={`btn ${styles.navBtn}`} to="/aboutus">
-                  About us
-                </Link>
-              </li>
-
+              <Link className={`btn ${styles.navBtn}`} to="/aboutus">
+                About us
+              </Link>
               <Link className={`btn ${styles.navBtn}`} to="/contactus">
                 Contact us
               </Link>
 
-              <Link className={`btn ${styles.navBtn}`} to="/adminlogin">
-                Login/Signup
-              </Link>
+              {!isEmployeeOptionVisible && (
+                <Link className={`btn ${styles.navBtn}`} to="/adminlogin">
+                  Login
+                </Link>
+              )}
+
+              {isEmployeeOptionVisible && (
+                <button
+                  className={`btn ${styles.navBtn}`}
+                  onClick={() => {
+                    console.log("Logout clicked");
+                    localStorage.setItem("isLoggedIn", "false");
+                    localStorage.setItem("username", "username");
+                    navigate("/");
+                    window.location.reload();
+                  }}
+                >
+                  Logout
+                </button>
+              )}
 
               {/* <li className="nav-item">
                                 <Link

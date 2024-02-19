@@ -8,7 +8,6 @@ export const useUserLogged = () => {
   useEffect(() => {
     localStorage.setItem("isLoggedIn", userLogged);
   }, [userLogged]);
-
   return [userLogged, setUserLogged];
 };
 

@@ -7,19 +7,17 @@ import lombok.Getter;
 
 @Entity
 @Getter
-public class Employee {
+public class EmployeeEntity {
 
     @Id
     @GeneratedValue
-    private Long id;
+    private Long id;	
     private String firstName;
     private String lastName;
     private String email;
     private String mobNo;
 
-    private String pwd;
-
-    public Employee(Long id, String firstName, String lastName, String email, String mobNo) {
+    public EmployeeEntity(Long id, String firstName, String lastName, String email, String mobNo) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -27,7 +25,7 @@ public class Employee {
         this.mobNo = mobNo;
     }
 
-    public Employee() {
+    public EmployeeEntity() {
     }
 //
 //    public Long getId() {

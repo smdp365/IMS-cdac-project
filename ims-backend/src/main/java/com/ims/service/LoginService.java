@@ -25,9 +25,8 @@ import jakarta.transaction.Transactional;
 		Optional object is used to represent null with absent value. 
 		This class has various utility methods to facilitate code to handle values as ‘available’ or ‘not available’ instead of checking null values. */
 
-		public Optional<Login> loginAdmin(String email) {
-
-			return arepo.findByEmail(email); // Invoke Custom method
+		public Login loginAdmin(String email) {
+			return arepo.findByEmail(email).orElse(null); // Invoke Custom method
 		}	
 	}
 

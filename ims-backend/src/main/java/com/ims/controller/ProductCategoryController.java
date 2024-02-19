@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 @RestController
-@CrossOrigin("http://localhost:5174")
+@CrossOrigin("http://localhost:5173")
 public class ProductCategoryController {
 	
 	@Autowired
