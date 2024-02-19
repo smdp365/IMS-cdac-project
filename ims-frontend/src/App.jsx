@@ -14,10 +14,11 @@ import Products from "./components/Products";
 import AddProduct from "./components/AddProduct";
 import EditProduct from "./components/EditProduct";
 import DetailsProduct from "./components/DetailsProduct";
-import AdminLogin from "./components/AdminLogin";
-import { useEffect, useState } from "react";
 import { useEmployeeOptionVisibility } from "./utils/flags";
 import Footer from "./components/Footer";
+import LogSign from "./components/LogSign";
+import AdminLogin from "./components/AdminLogin";
+import EmployeeLogin from "./components/EmployeeLogin";
 
 function App() {
     const isEmployeeOptionVisible = useEmployeeOptionVisibility();
@@ -37,12 +38,18 @@ function App() {
                 <div style={{ flex: "1" }}>
                     <Routes>
                         <Route exact path="/" element={<Home />} />
+                        <Route exact path="/login" element={<LogSign />} />
+                        <Route exact path="/aboutus" element={<AboutUs />} />
                         <Route
                             exact
                             path="/adminlogin"
                             element={<AdminLogin />}
                         />
-                        <Route exact path="/aboutus" element={<AboutUs />} />
+                        <Route
+                            exact
+                            path="/employeelogin"
+                            element={<EmployeeLogin />}
+                        />
                         <Route
                             exact
                             path="/contactus"

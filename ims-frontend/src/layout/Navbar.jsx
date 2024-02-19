@@ -87,7 +87,7 @@ export default function Navbar() {
                             {!isEmployeeOptionVisible && (
                                 <Link
                                     className={`btn ${styles.navBtn}`}
-                                    to="/adminlogin"
+                                    to="/login"
                                 >
                                     Login
                                 </Link>
