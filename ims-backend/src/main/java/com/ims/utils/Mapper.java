@@ -1,12 +1,11 @@
 package com.ims.utils;
 
-import com.ims.model.Employee;
 import com.ims.model.EmployeeEntity;
 
 public class Mapper {
 
-    public static Employee toEmployee(EmployeeEntity employeeEntity) {
-        Employee employee = new Employee();
+    public static EmployeeEntity toEmployee(EmployeeEntity employeeEntity) {
+        EmployeeEntity employee = new EmployeeEntity();
         employee.setEmail(employeeEntity.getEmail());
         employee.setFirstName(employeeEntity.getFirstName());
         employee.setLastName(employeeEntity.getLastName());
@@ -14,7 +13,7 @@ public class Mapper {
         return employee;
     }
 
-    public static EmployeeEntity toEmployeeEntity(Employee employee) {
+    public static EmployeeEntity toEmployeeEntity(EmployeeEntity employee) {
         EmployeeEntity employeeEntity = new EmployeeEntity();
         employeeEntity.setEmail(employee.getEmail());
         employeeEntity.setFirstName(employee.getFirstName());
