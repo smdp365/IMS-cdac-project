@@ -14,11 +14,12 @@ export default function Navbar() {
         <div>
             <nav className={`navbar navbar-expand-lg shadow  ${styles.navbar}`}>
                 <div className={`container ${styles.container}`}>
-                    <div className={`navbar-brand ${styles.logoContainer}`}>
+                    <div className={`navbar-brand ${styles.logoContainer}`} onClick={() => {navigate("/")}}>
                         <img
                             src={logo}
                             alt="Logo"
                             className={`${styles.logoImage}`}
+                            
                         />
                     </div>
 
