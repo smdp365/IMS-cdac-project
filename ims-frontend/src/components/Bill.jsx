@@ -42,9 +42,11 @@ export default function Bill(props) {
                     className={`card shadow-sm p-4 ${styles.receiptContainer}`}
                     style={{ borderRadius: "15px" }}
                 >
-                    <h1 className={`pb-3 ${styles.receiptHeader}`}>
-                        BILL RECEIPT
-                    </h1>
+                    <h1>VAAS - Inventory Management System</h1>
+                    <hr />
+                    <h2 className={`pb-3 ${styles.receiptHeader}`}>
+                        ORDER RECEIPT
+                    </h2>
                     <div className={`row ${styles.billItemsContainer}`}>
                         <div className="table-responsive">
                             <table
@@ -52,11 +54,21 @@ export default function Bill(props) {
                             >
                                 <thead>
                                     <tr>
-                                        <th>SNo.</th>
-                                        <th>ProductName</th>
-                                        <th>Unit Price</th>
-                                        <th>Quantity</th>
-                                        <th>Amount</th>
+                                        <th className={`${styles.tableHead}`}>
+                                            SNo.
+                                        </th>
+                                        <th className={`${styles.tableHead}`}>
+                                            ProductName
+                                        </th>
+                                        <th className={`${styles.tableHead}`}>
+                                            Unit Price
+                                        </th>
+                                        <th className={`${styles.tableHead}`}>
+                                            Quantity
+                                        </th>
+                                        <th className={`${styles.tableHead}`}>
+                                            Amount
+                                        </th>
                                     </tr>
                                 </thead>
                                 <tbody>

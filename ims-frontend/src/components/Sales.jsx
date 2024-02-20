@@ -121,7 +121,7 @@ export default function Sales() {
                                         className={`${styles.tableHeading}`}
                                         scope="col"
                                     >
-                                        Amount
+                                        Amount (in Rs.)
                                     </th>
                                     {/* <th className={` ${styles.tableHeading}`} scope="col">
                     Actions
@@ -138,6 +138,7 @@ export default function Sales() {
 
                                         return (
                                             <tr key={product.id}>
+                                                {/* serial number */}
                                                 <th
                                                     scope="row"
                                                     key={index}
@@ -145,23 +146,30 @@ export default function Sales() {
                                                 >
                                                     {index + 1}
                                                 </th>
+
+                                                {/* product id */}
                                                 <td
                                                     className={`${styles.tableRow}`}
                                                     key={product.id}
                                                 >
                                                     {product.id}
                                                 </td>
+
+                                                {/* product name */}
                                                 <td
                                                     className={`${styles.tableRow}`}
                                                 >
                                                     {product.productName}
                                                 </td>
+
+                                                {/* unit price */}
                                                 <td
                                                     className={`${styles.tableRow}`}
                                                 >
                                                     {product.pricePerProduct}
                                                 </td>
 
+                                                {/* units */}
                                                 <td
                                                     className={`${styles.tableRow}`}
                                                 >
@@ -170,7 +178,8 @@ export default function Sales() {
                                                             display: "flex",
                                                             alignItems:
                                                                 "center",
-                                                            marginLeft: "60px",
+                                                            justifyContent:
+                                                                "center",
                                                         }}
                                                     >
                                                         {/* Pass product ID to handleIncrement and handleDecrement */}
@@ -180,7 +189,7 @@ export default function Sales() {
                                                                     product.id
                                                                 )
                                                             }
-                                                            className="btn btn-secondary "
+                                                            className={`btn ${styles.incDecButton}`}
                                                         >
                                                             -
                                                         </button>
@@ -193,7 +202,7 @@ export default function Sales() {
                                                                 ] || 0
                                                             }
                                                             readOnly
-                                                            className="form-control mr-2"
+                                                            className={`form-control mr-2 ${styles.unitsInput}`}
                                                             style={{
                                                                 width: "40px",
                                                             }}
@@ -205,13 +214,14 @@ export default function Sales() {
                                                                     product.id
                                                                 )
                                                             }
-                                                            className="btn btn-secondary"
+                                                            className={`btn ${styles.incDecButton}`}
                                                         >
                                                             +
                                                         </button>
                                                     </div>
                                                 </td>
 
+                                                {/* Amount */}
                                                 <td
                                                     className={`${styles.tableRow}`}
                                                 >

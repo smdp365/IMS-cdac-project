@@ -6,22 +6,29 @@
 .firstRowCol {
   background-color: #023e8a;
   color: #ffffff;
-  padding: 5%;
-  text-align: center;
+  padding: 3%;
+  text-align: center; 
 }
 
 .secondRowColHeading {
   text-align: left;
-  margin-top: 2%;
-  margin-right: 15%;
 }
 
 .secondRowCol {
   background-color: #ffffff;
   height: 100%;
-  padding: 3%;
+  /* padding-top: 10px; */
+  /* border: 2px solid red; */
 }
 
+.secondRowColTeamImages {
+  width: 250px;
+  height: 250px;
+  background-color: #d4defb;
+  border: 3px solid #023e8a;
+  border-radius: 10px;
+  margin-bottom: 2%;
+}
 .thirdRow {
   background-color: #023e8a;
   padding: 10%;
@@ -41,11 +48,7 @@
   padding: 2%;
 }
 
-.fourthRowColCertificate {
-  width: 200px;
-  height: 200px;
-  background-color: #d4defb;
-}
+
 .fourthRowColHeading {
   border: #023e8a 2px solid;
   padding: 3%;

@@ -28,18 +28,28 @@
 
 .sliderRow{
   margin-top: 1%;
-  width: 99%;
-  max-width: 100%;
+  width: 101%;
+  padding: 2%;
 }
 
 .productImage{
- 
-  /* width: 100%;
-  margin-right: 0px; */
+  margin: auto;
+  width: 80%;
+  height: 200px;
+  border: 3px solid #023e8a;
+  background-color: #FFFFFF;
+  border-radius: 10px;
+  margin-bottom: 10%;
 }
 
+.productName{
+  font-weight: 500;
+  font-size: 20px;
+  color: black;
+}
+
+
 .secondRowCol {
-  background-color: #bbcfe4;
   height: 100%;
   padding: 2%;
 }
@@ -49,6 +59,8 @@
   height: 250px;
   background-color: #FFFFFF;
   padding: 15px;
+  border: 3px solid #023e8a;
+  border-radius: 10px;
 }
 
 .thirdRowCol {
@@ -71,7 +83,7 @@
 .fourthRowColmiddle {
   padding: 3%;
   border: #023e8a 2px solid;
-  border-radius: 10%;
+  border-radius: 7%;
   background-color: #fff;
 }
 .inquireinput .form-control {
@@ -83,3 +95,24 @@
   color: #ffffff; /* Text color */
   padding: 10px 20px;
 }
+
+
+.submitBtn{
+  background-color: #023e8a;
+  color: #FFFFFF;
+  border: 2px solid #023e8a;
+  font-weight: 500;
+}
+
+.submitBtn:hover{
+  background-color: #d4defb;
+  border: 2px solid #023e8a;
+
+}
+
+.inputFields{
+  border-radius: 7px;
+  background-color: #d4defb;
+
+}
+
