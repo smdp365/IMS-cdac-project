@@ -4,196 +4,246 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 
 export default function Sales() {
-  const [products, setProducts] = useState({});
-  const [unitCounts, setUnitCounts] = useState({});
-  const [totalPrices, setTotalPrices] = useState({});
+    const [products, setProducts] = useState({});
+    const [unitCounts, setUnitCounts] = useState({});
+    const [totalPrices, setTotalPrices] = useState({});
 
-  useEffect(() => {
-    loadProducts();
-  }, []);
+    useEffect(() => {
+        loadProducts();
+    }, []);
 
-  const loadProducts = async () => {
-    try {
-      const result = await axios.get("http://localhost:8080/allproduct");
-      const productsData = result.data;
+    const loadProducts = async () => {
+        try {
+            const result = await axios.get("http://localhost:8080/allproduct");
+            const productsData = result.data;
 
-      // Create a dictionary-like object from the products data
-      const productsDict = {};
+            // Create a dictionary-like object from the products data
+            const productsDict = {};
 
-      productsData.forEach((product) => {
-        // Assuming product has a unique identifier like 'id'
-        productsDict[product.id] = product;
-      });
+            productsData.forEach((product) => {
+                // Assuming product has a unique identifier like 'id'
+                productsDict[product.id] = product;
+            });
 
-      // Now, productsDict will contain the products data in dictionary-like format
-      console.log("prodctDict - ", productsDict);
-      setProducts(productsDict);
-    } catch (error) {
-      console.error("Error loading products:", error);
-    }
-  };
+            // Now, productsDict will contain the products data in dictionary-like format
+            console.log("prodctDict - ", productsDict);
+            setProducts(productsDict);
+        } catch (error) {
+            console.error("Error loading products:", error);
+        }
+    };
 
-  // const deleteProduct = async (id) => {
-  //   await axios.delete(`http://localhost:8080/product/${id}`);
-  //   loadProducts();
-  // };
 
-  // For increment and decrement count of product
+    // Function to handle incrementing count for a specific product
 
-  // const handleIncrement = () => {
-  //   setUnitCount(unitCount + 1);
-  // };
+    const handleIncrement = (productId) => {
+        if ((unitCounts[productId] || 0) < products[productId].quantity) {
+            const updatedUnitCount = (unitCounts[productId] || 0) + 1;
+            setUnitCounts((unitCounts) => ({
+                ...unitCounts,
+                [productId]: updatedUnitCount, // Increment count by 1
+            }));
+            setTotalPrices((totalPrices) => ({
+                ...totalPrices,
+                [productId]:
+                    updatedUnitCount * products[productId].pricePerProduct,
+            }));
+            console.log(
+                "printed",
+                updatedUnitCount,
+                products[productId].pricePerProduct,
+                totalPrices[productId]
+            );
+        }
+    };
 
-  // const handleDecrement = () => {
-  //   if (unitCount > 0) {
-  //     setUnitCount(unitCount - 1);
-  //   }
-  // };
+    // Function to handle decrementing count for a specific product
+    const handleDecrement = (productId) => {
+      const updatedUnitCount = (unitCounts[productId] || 0) - 1;
+        if (unitCounts[productId] > 0) {
+            setUnitCounts((unitCounts) => ({
+                ...unitCounts,
+                [productId]: unitCounts[productId] - 1, // Decrement count by 1 if count > 0
+            }));
 
-  // Function to handle incrementing count for a specific product
-  const handleIncrement = (productId) => {
-    // console.log(
-    //   "asasasjbibubj ",
-    //   (unitCounts[productId] || 0) < products[productId].quantity,
-    //   products[productId].id,
-    //   unitCounts[productId],
-    //   productId
-    // );
-    if ((unitCounts[productId] || 0) < products[productId].quantity) {
-      const updatedUnitCount = (unitCounts[productId] || 0) + 1;
-      setUnitCounts((unitCounts) => ({
-        ...unitCounts,
-        [productId]: updatedUnitCount, // Increment count by 1
-      }));
-      setTotalPrices((totalPrices) => ({
-        ...totalPrices,
-        [productId]: updatedUnitCount * products[productId].price,
-      }));
-      console.log(
-        "printed",
-        updatedUnitCount,
-        products[productId].price,
-        totalPrices[productId]
-      );
-    }
-  };
+            setTotalPrices((totalPrices) => ({
+                ...totalPrices,
+                [productId]: updatedUnitCount * products[productId].pricePerProduct,
+            }));
+        }
+    };
 
-  // Function to handle decrementing count for a specific product
-  const handleDecrement = (productId) => {
-    if (unitCounts[productId] > 0) {
-      setUnitCounts((unitCounts) => ({
-        ...unitCounts,
-        [productId]: unitCounts[productId] - 1, // Decrement count by 1 if count > 0
-      }));
-    }
-  };
-
-  return (
-    <>
-      <div className={`container ${styles.mainContainer}`}>
-        <div className="py-4">
-          <div className="table-responsive">
-            <table className="table table-primary shadow">
-              <thead>
-                <tr>
-                  <th className={`${styles.tableHeading}`} scope="col">
-                    S.No.
-                  </th>
-                  <th className={`${styles.tableHeading}`} scope="col">
-                    ID
-                  </th>
-                  <th className={`${styles.tableHeading}`} scope="col">
-                    Product Name
-                  </th>
-                  <th className={`${styles.tableHeading}`} scope="col">
-                    Unit Price
-                  </th>
-                  <th className={`${styles.tableHeading}`} scope="col">
-                    Total Units
-                  </th>
-                  <th className={`${styles.tableHeading}`} scope="col">
-                    Total Amount
-                  </th>
-                  {/* <th className={` ${styles.tableHeading}`} scope="col">
+    return (
+        <>
+            <div className={`container ${styles.mainContainer}`}>
+                <div className="py-4">
+                    <div className="table-responsive">
+                        <table className="table table-primary shadow">
+                            <thead>
+                                <tr>
+                                    <th
+                                        className={`${styles.tableHeading}`}
+                                        scope="col"
+                                    >
+                                        S.No.
+                                    </th>
+                                    <th
+                                        className={`${styles.tableHeading}`}
+                                        scope="col"
+                                    >
+                                        ID
+                                    </th>
+                                    <th
+                                        className={`${styles.tableHeading}`}
+                                        scope="col"
+                                    >
+                                        Product Name
+                                    </th>
+                                    <th
+                                        className={`${styles.tableHeading}`}
+                                        scope="col"
+                                    >
+                                        Unit Price
+                                    </th>
+                                    <th
+                                        className={`${styles.tableHeading}`}
+                                        scope="col"
+                                    >
+                                        Total Units
+                                    </th>
+                                    <th
+                                        className={`${styles.tableHeading}`}
+                                        scope="col"
+                                    >
+                                        Total Amount
+                                    </th>
+                                    {/* <th className={` ${styles.tableHeading}`} scope="col">
                     Actions
                   </th> */}
-                </tr>
-              </thead>
+                                </tr>
+                            </thead>
 
-              <tbody>
-                {Object.keys(products).map((productId, index) => {
-                  const product = products[productId];
-                  console.log(productId, index, product);
-                  console.debug(productId, index, product);
+                            <tbody>
+                                {Object.keys(products).map(
+                                    (productId, index) => {
+                                        const product = products[productId];
+                                        console.log(productId, index, product);
+                                        console.debug(
+                                            productId,
+                                            index,
+                                            product
+                                        );
 
-                  return (
-                    <tr key={product.id}>
-                      <th
-                        scope="row"
-                        key={index}
-                        className={`${styles.tableRow}`}
-                      >
-                        {index + 1}
-                      </th>
-                      <td className={`${styles.tableRow}`} key={product.id}>
-                        {product.id}
-                      </td>
-                      <td className={`${styles.tableRow}`}>
-                        {product.productName}
-                      </td>
-                      <td className={`${styles.tableRow}`}>{product.price}</td>
+                                        return (
+                                            <tr key={product.id}>
+                                                {/* serial number */}
+                                                <th
+                                                    scope="row"
+                                                    key={index}
+                                                    className={`${styles.tableRow}`}
+                                                >
+                                                    {index + 1}
+                                                </th>
 
-                      <td className={`${styles.tableRow}`}>
-                        <div
-                          style={{
-                            display: "flex",
-                            alignItems: "center",
-                            marginLeft: "60px",
-                          }}
-                        >
-                          {/* Pass product ID to handleIncrement and handleDecrement */}
-                          <button
-                            onClick={() => handleDecrement(product.id)}
-                            className="btn btn-secondary "
-                          >
-                            -
-                          </button>
-                          {/* Display count for the corresponding product */}
-                          <input
-                            type="text"
-                            value={unitCounts[product.id] || 0}
-                            readOnly
-                            className="form-control mr-2"
-                            style={{ width: "40px" }}
-                          />
-                          {/* Pass product ID to handleIncrement */}
-                          <button
-                            onClick={() => handleIncrement(product.id)}
-                            className="btn btn-secondary"
-                          >
-                            +
-                          </button>
-                        </div>
-                      </td>
+                                                {/* product id */}
+                                                <td
+                                                    className={`${styles.tableRow}`}
+                                                    key={product.id}
+                                                >
+                                                    {product.id}
+                                                </td>
 
-                      <td className={`${styles.tableRow}`}>
-                        {totalPrices[product.id] || 0}
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-            {
-              <div className={`${styles.sideBar}`}>
-                <Link className={`btn ${styles.addButton}`} to="/bill">
-                  Bill
-                </Link>
-              </div>
-            }
-          </div>
-        </div>
-      </div>
-    </>
-  );
+                                                {/* product name */}
+                                                <td
+                                                    className={`${styles.tableRow}`}
+                                                >
+                                                    {product.productName}
+                                                </td>
+
+                                                {/* price per product */}
+                                                <td
+                                                    className={`${styles.tableRow}`}
+                                                >
+                                                    {product.pricePerProduct}
+                                                </td>
+
+                                                {/* increment and decrement buttons */}
+                                                <td
+                                                    className={`${styles.tableRow}`}
+                                                >
+                                                    <div
+                                                        style={{
+                                                            display: "flex",
+                                                            alignItems:
+                                                                "center",
+                                                            marginLeft: "60px",
+                                                        }}
+                                                    >
+                                                        {/* Pass product ID to handleIncrement and handleDecrement */}
+                                                        <button
+                                                            onClick={() =>
+                                                                handleDecrement(
+                                                                    product.id
+                                                                )
+                                                            }
+                                                            className="btn btn-secondary "
+                                                        >
+                                                            -
+                                                        </button>
+                                                        {/* Display count for the corresponding product */}
+                                                        <input
+                                                            type="text"
+                                                            value={
+                                                                unitCounts[
+                                                                    product.id
+                                                                ] || 0
+                                                            }
+                                                            readOnly
+                                                            className="form-control mr-2"
+                                                            style={{
+                                                                width: "40px",
+                                                            }}
+                                                        />
+                                                        {/* Pass product ID to handleIncrement */}
+                                                        <button
+                                                            onClick={() =>
+                                                                handleIncrement(
+                                                                    product.id
+                                                                )
+                                                            }
+                                                            className="btn btn-secondary"
+                                                        >
+                                                            +
+                                                        </button>
+                                                    </div>
+                                                </td>
+
+                                                {/* total price */}
+                                                <td
+                                                    className={`${styles.tableRow}`}
+                                                >
+                                                    {totalPrices[product.id] ||
+                                                        0}
+                                                </td>
+                                            </tr>
+                                        );
+                                    }
+                                )}
+                            </tbody>
+                        </table>
+                        {
+                            <div className={`${styles.sideBar}`}>
+                                <Link
+                                    className={`btn ${styles.addButton}`}
+                                    to="/bill"
+                                >
+                                    Bill
+                                </Link>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </>
+    );
 }

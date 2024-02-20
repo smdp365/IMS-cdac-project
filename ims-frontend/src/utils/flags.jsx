@@ -1,24 +1,36 @@
 import { useEffect, useState } from "react";
 
 export const useUserLogged = () => {
-  const [userLogged, setUserLogged] = useState(
-    localStorage.getItem("isLoggedIn")
-  );
+    const [userLogged, setUserLogged] = useState(
+        sessionStorage.getItem("isLoggedIn")
+    );
 
-  useEffect(() => {
-    localStorage.setItem("isLoggedIn", userLogged);
-  }, [userLogged]);
-  return [userLogged, setUserLogged];
+    useEffect(() => {
+        sessionStorage.setItem("isLoggedIn", userLogged);
+    }, [userLogged]);
+    return [userLogged, setUserLogged];
 };
 
-export const useEmployeeOptionVisibility = () => {
-  const [isEmployeeOptionVisible, setIsEmployeeOptionVisible] = useState(false);
-  const [userLogged, _] = useUserLogged();
+export const useIsAdmin = () => {
+    const [isAdmin, setIsAdmin] = useState(false);
+    const [userLogged, _] = useUserLogged();
 
-  useEffect(() => {
-    const flagFromLocalStorage = localStorage.getItem("isLoggedIn");
-    setIsEmployeeOptionVisible(flagFromLocalStorage === "true");
-  }, [userLogged]);
+    useEffect(() => {
+        const isAdmin = sessionStorage.getItem("isAdmin");
+        setIsAdmin(isAdmin === "true");
+    }, [userLogged]);
 
-  return isEmployeeOptionVisible;
+    return isAdmin;
+};
+
+export const useIsLoggedIn = () => {
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [userLogged, _] = useUserLogged();
+
+    useEffect(() => {
+        const isLoggedIn = sessionStorage.getItem("isLoggedIn");
+        setIsLoggedIn(isLoggedIn === "true");
+    }, [userLogged]);
+
+    return isLoggedIn;
 };

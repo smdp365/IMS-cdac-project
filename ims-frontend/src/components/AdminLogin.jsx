@@ -11,9 +11,10 @@ const AdminLogin = () => {
     const navigate = useNavigate();
 
     const loginRequest = (username, password) => {
-        return axios.post("http://localhost:8080/loginReal", {
+        return axios.post("http://localhost:8080/login", {
             email: username,
-            password: password,
+            passwordHash: password,
+            isAdmin: true,
         });
     };
 
@@ -26,9 +27,11 @@ const AdminLogin = () => {
                 console.log("Login response:", response.data);
 
                 // Update local storage and state with login status
-                localStorage.setItem("isLoggedIn", "true");
+                sessionStorage.setItem("isLoggedIn", "true");
+                sessionStorage.setItem("isAdmin", "true");
+
                 // setUserLogged("true"); // Try updating the state directly here
-                localStorage.setItem("username", username);
+                sessionStorage.setItem("username", username);
 
                 console.log("Login successful", userLogged); // This might still show the old value due to closure
                 navigate("/");
@@ -45,10 +48,12 @@ const AdminLogin = () => {
     return (
         <div className={`${styles.container} row`}>
             <div className={`${styles.left} col-sm-12 col-lg-6`}>
-                <h2 className={styles.heading}>Inventory Management System</h2>
+                <h3 className={styles.heading}>Inventory Management System</h3>
                 <div className={styles.imageDiv}></div>
                 <p className={styles.learnText}>
-                    Learn how to manage inventory now
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Aliquam error enim sapiente, necessitatibus hic sequi ab
+                    beatae unde sit maiores ratione eveniet minima.
                 </p>
             </div>
             <div className={`${styles.right} col-sm-12 col-lg-6`}>

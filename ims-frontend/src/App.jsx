@@ -14,15 +14,15 @@ import Products from "./components/Products";
 import AddProduct from "./components/AddProduct";
 import EditProduct from "./components/EditProduct";
 import DetailsProduct from "./components/DetailsProduct";
-import { useEmployeeOptionVisibility } from "./utils/flags";
+import { useIsAdmin, useIsLoggedIn } from "./utils/flags";
 import Footer from "./components/Footer";
 import LogSign from "./components/LogSign";
 import AdminLogin from "./components/AdminLogin";
 import EmployeeLogin from "./components/EmployeeLogin";
 
 function App() {
-    const isEmployeeOptionVisible = useEmployeeOptionVisibility();
-    console.log("isEmployeeOptionVisible : ", isEmployeeOptionVisible);
+    const isLoggedIn = useIsLoggedIn();
+    const isAdmin = useIsAdmin();
     return (
         <Router>
             <div
@@ -55,53 +55,58 @@ function App() {
                             path="/contactus"
                             element={<ContactUs />}
                         />
-                        {isEmployeeOptionVisible && (
+                        {isLoggedIn && (
                             <>
-                                <Route
-                                    exact
-                                    path="/employee"
-                                    element={<Employee />}
-                                />
-                                <Route
-                                    exact
-                                    path="/addemployee"
-                                    element={<AddEmployee />}
-                                />
-                                <Route
-                                    exact
-                                    path="/editemployee/:id"
-                                    element={<EditEmployee />}
-                                />
-                                <Route
-                                    exact
-                                    path="/viewemployee/:id"
-                                    element={<DetailsEmployee />}
-                                />
                                 <Route
                                     exact
                                     path="/sales"
                                     element={<Sales />}
-                                />
-                                <Route
-                                    exact
-                                    path="/products"
-                                    element={<Products />}
-                                />
-                                <Route
-                                    exact
-                                    path="/addproduct"
-                                    element={<AddProduct />}
-                                />
-                                <Route
-                                    exact
-                                    path="/editproduct/:id"
-                                    element={<EditProduct />}
-                                />
-                                <Route
-                                    exact
-                                    path="/viewproduct/:id"
-                                    element={<DetailsProduct />}
-                                />
+                                />{" "}
+                                {isAdmin && (
+                                    <>
+                                        <Route
+                                            exact
+                                            path="/employee"
+                                            element={<Employee />}
+                                        />
+                                        <Route
+                                            exact
+                                            path="/addemployee"
+                                            element={<AddEmployee />}
+                                        />
+                                        <Route
+                                            exact
+                                            path="/editemployee/:id"
+                                            element={<EditEmployee />}
+                                        />
+                                        <Route
+                                            exact
+                                            path="/viewemployee/:id"
+                                            element={<DetailsEmployee />}
+                                        />
+
+                                        <Route
+                                            exact
+                                            path="/products"
+                                            element={<Products />}
+                                        />
+                                        <Route
+                                            exact
+                                            path="/addproduct"
+                                            element={<AddProduct />}
+                                        />
+                                        <Route
+                                            exact
+                                            path="/editproduct/:id"
+                                            element={<EditProduct />}
+                                        />
+                                        <Route
+                                            exact
+                                            path="/viewproduct/:id"
+                                            element={<DetailsProduct />}
+                                        />
+                                    </>
+                                )}
                             </>
                         )}
                     </Routes>
