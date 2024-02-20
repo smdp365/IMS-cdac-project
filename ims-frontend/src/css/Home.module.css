@@ -1,7 +1,11 @@
 .container {
   margin-top: 1%;
   width: 99%;
+  max-width: 100%;
+ 
+  /* overflow-x: hidden; */
 }
+
 
 .firstRowCol {
   background-color: #023e8a;
@@ -16,23 +20,36 @@
   margin-top: 2%;
   margin-right: 15%;
 }
-.icon1{
+/* .icon1{
   color: "#0000FF";
   margin: "15px";
   font-size: "40px";
+} */
+
+.sliderRow{
+  margin-top: 1%;
+  width: 99%;
+  max-width: 100%;
 }
 
-/* .secondRowCol {
-  background-color: #ffffff;
+.productImage{
+ 
+  /* width: 100%;
+  margin-right: 0px; */
+}
+
+.secondRowCol {
+  background-color: #bbcfe4;
   height: 100%;
   padding: 2%;
-} */
+}
 
-/* .secondRowColCertificate {
-  width: 200px;
-  height: 200px;
-  background-color: #d4defb;
-} */
+.secondRowColCertificate {
+  width:310px;
+  height: 250px;
+  background-color: #FFFFFF;
+  padding: 15px;
+}
 
 .thirdRowCol {
   padding: 1%;

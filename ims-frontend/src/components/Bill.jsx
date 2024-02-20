@@ -1,125 +1,96 @@
-import axios from "axios";
 import React, { useState } from "react";
 import styles from "../css/Bill.module.css";
+import { useLocation, useNavigate } from "react-router-dom";
+import { globalProducts, useProducts } from "../utils/data";
 
-export default function BillForm() {
-  // State variables for form name, date, and bill items
+export default function BillForm(props) {
   const [formName, setFormName] = useState("");
   const [date, setDate] = useState("");
-  const [billItems, setBillItems] = useState([]);
+  // const [products, setProducts] = useProducts();
+  console.log("globalProducts", globalProducts);
 
-  // Function to handle form name change
-  const handleFormNameChange = (event) => {
-    setFormName(event.target.value);
+  const totalAmount = Object.keys(globalProducts)
+    .filter((productId) => globalProducts[productId] !== null)
+    .reduce(
+      (totalPrice, productId) =>
+        totalPrice + globalProducts[productId].totalPrice,
+      0
+    );
+
+  let navigate = useNavigate();
+
+  const printReceipt = () => {
+    const receiptDiv = document.getElementById("tmp"); // Get the div with id "tmp"
+    if (receiptDiv) {
+      const originalContent = document.body.innerHTML; // Store the original content
+      const printContent = receiptDiv.innerHTML; // Get the content of the receipt div
+
+      document.body.innerHTML = printContent; // Set the body content to the receipt div content
+      window.print(); // Print the content
+
+      document.body.innerHTML = originalContent; // Restore the original content
+    } else {
+      console.error("Receipt div not found.");
+    }
   };
-
-  // Function to handle date change
-  const handleDateChange = (event) => {
-    setDate(event.target.value);
-  };
-
-  // Function to handle adding a new bill item
-  const addBillItem = () => {
-    setBillItems([
-      ...billItems,
-      {
-        serialNo: billItems.length + 1,
-        particulars: "",
-        quantity: 0,
-        amount: 0,
-      },
-    ]);
-  };
-
-  // Function to handle changing particulars, quantity, and amount of a bill item
-  const handleBillItemChange = (index, field, value) => {
-    const updatedBillItems = [...billItems];
-    updatedBillItems[index][field] = value;
-    setBillItems(updatedBillItems);
-  };
-
-  // Calculate total amount
-  const totalAmount = billItems.reduce((total, item) => total + item.amount, 0);
 
   return (
-    <div className={`container ${styles.mainContainer}`}>
-      <div className="py-4">
-        <div className="table-responsive">
-          <h1 className="pb-3">BILL RECIEPT</h1>
-          <table className="table table-primary shadow">
-            <thead>
-              <tr>
-                <th className={`${styles.tableHeading}`} scope="col">
-                  S.No.
-                </th>
-
-                <th className={`${styles.tableHeading}`} scope="col">
-                  Particulars
-                </th>
-                <th className={`${styles.tableHeading}`} scope="col">
-                  Quantity
-                </th>
-                <th className={`${styles.tableHeading}`} scope="col">
-                  Amount
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {billItems.map((item, index) => (
-                <tr key={index}>
-                  <td>{item.serialNo}</td>
-                  <td>
-                    <input
-                      type="text"
-                      value={item.particulars}
-                      onChange={(e) =>
-                        handleBillItemChange(
-                          index,
-                          "particulars",
-                          e.target.value
-                        )
-                      }
-                    />
-                  </td>
-                  <td>
-                    <input
-                      type="number"
-                      value={item.quantity}
-                      onChange={(e) =>
-                        handleBillItemChange(
-                          index,
-                          "quantity",
-                          parseInt(e.target.value)
-                        )
-                      }
-                    />
-                  </td>
-                  <td>
-                    <input
-                      type="number"
-                      value={item.amount}
-                      onChange={(e) =>
-                        handleBillItemChange(
-                          index,
-                          "amount",
-                          parseInt(e.target.value)
-                        )
-                      }
-                    />
-                  </td>
-                </tr>
-              ))}
-              <tr>
-                <td colSpan="3" style={{ textAlign: "right" }}>
-                  Total Amount:
-                </td>
-                <td>{totalAmount}</td>
-              </tr>
-            </tbody>
-          </table>
+    <>
+      <div className={`container ${styles.mainContainer}`}>
+        <div
+          id="tmp"
+          className={`card shadow-sm p-4 ${styles.receiptContainer}`}
+          style={{ borderRadius: "15px" }}
+        >
+          <h1 className={`pb-3 ${styles.receiptHeader}`}>BILL RECEIPT</h1>
+          <div className={`row ${styles.billItemsContainer}`}>
+            <div className="table-responsive">
+              <table className={`table table-striped ${styles.billTable}`}>
+                <thead>
+                  <tr>
+                    <th>SNo.</th>
+                    <th>ProductName</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Amount</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {Object.keys(globalProducts)
+                    .filter((productId) => globalProducts[productId] !== null)
+                    .map((productId, index) => (
+                      // {globalProducts.keys().map((item, index) => (
+                      <tr key={index}>
+                        <td>{index + 1}</td>
+                        <td>{globalProducts[productId].name}</td>
+                        <td>{globalProducts[productId].price}</td>
+                        <td>{globalProducts[productId].units}</td>
+                        <td>{globalProducts[productId].totalPrice}</td>
+                      </tr>
+                    ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div className={`row ${styles.totalAmountContainer}`}>
+            <div className="col-md-12" style={{ textAlign: "right" }}>
+              <strong>Total Amount: {totalAmount}</strong>
+            </div>
+          </div>
+          <div
+            className={`row justify-content-center ${styles.printButtonContainer}`}
+          >
+            <div className="col-md-6">
+              <button
+                className={`btn btn-primary btn-block ${styles.printButton}`}
+                onClick={printReceipt}
+              >
+                Print Receipt
+              </button>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-    // </div>
+    </>
   );
 }

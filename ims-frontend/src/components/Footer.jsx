@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "../css/Footer.module.css";
+import { FaMapMarkerAlt, FaPhone, FaEnvelope } from "react-icons/fa";
 import {
   FaFacebook,
   FaGoogle,
@@ -9,7 +10,8 @@ import {
 export default function Footer() {
   return (
     <div>
-      <div className={`${styles.firstRow} row`}>
+      <div className={` ${styles.firstRow} row`}>
+        {/* <div className={`${styles.footer-content}`}> */}
         <div className={`${styles.firstRowCol} col-sm-4`}>
           <ul style={{ listStyleType: "none", paddingTop: "20px" }}>
             <li>
@@ -18,7 +20,7 @@ export default function Footer() {
                 style={{
                   color: "#fff",
                   margin: "7px",
-                  fontWeight: "500",
+                  fontFamily: "Playfair Display, serif",
                 }}
               >
                 Home
@@ -30,7 +32,7 @@ export default function Footer() {
                 style={{
                   color: "#fff",
                   margin: "7px",
-                  fontWeight: "500",
+                  fontFamily: "Playfair Display, serif",
                 }}
               >
                 About Us
@@ -42,7 +44,7 @@ export default function Footer() {
                 style={{
                   color: "#fff",
                   margin: "7px",
-                  fontWeight: "500",
+                  fontFamily: "Playfair Display, serif",
                 }}
               >
                 Our Products
@@ -54,7 +56,7 @@ export default function Footer() {
                 style={{
                   color: "#fff",
                   margin: "7px",
-                  fontWeight: "500",
+                  fontFamily: "Playfair Display, serif",
                 }}
               >
                 Contact Us
@@ -66,7 +68,7 @@ export default function Footer() {
                 style={{
                   color: "#fff",
                   margin: "7px",
-                  fontWeight: "500",
+                  fontFamily: "Playfair Display, serif",
                 }}
               >
                 Login
@@ -79,7 +81,7 @@ export default function Footer() {
           <h2 className={`${styles.logo} `}>Inventary Management System</h2>
 
           <div className="socialMedia">
-            <a href="#">
+            <a href="https://shorturl.at/eGJLW">
               <FaGoogle
                 style={{
                   color: "#fff",
@@ -88,7 +90,7 @@ export default function Footer() {
                 }}
               />
             </a>
-            <a href="#">
+            <a href="https://shorturl.at/dBHY3">
               <FaFacebook
                 style={{
                   color: "#fff",
@@ -98,7 +100,7 @@ export default function Footer() {
                 }}
               />
             </a>
-            <a href="#">
+            <a href="https://shorturl.at/HIT69">
               <FaInstagramSquare
                 style={{
                   color: "#fff",
@@ -107,7 +109,7 @@ export default function Footer() {
                 }}
               />
             </a>
-            <a href="#">
+            <a href="https://twitter.com/i/flow/login">
               <FaTwitter
                 style={{
                   color: "#fff",
@@ -121,30 +123,38 @@ export default function Footer() {
         <div className={`${styles.firstRowCol} col-sm-4`}>
           <ul style={{ listStyleType: "none", paddingTop: "20px" }}>
             <li>
+              <FaMapMarkerAlt style={{ fontSize: "20px", color: "#fff" }} />
               <h6
                 style={{
                   color: "#fff",
+                  fontFamily: "Playfair Display, serif",
                 }}
               >
                 SLN Showroom,near velankani gate,Electronic City,Bangalore
               </h6>
             </li>
             <li>
+              <a href="https://accounts.google.com/v3/signin/identifier?ifkv=ATuJsjx6cBg_bxgAERJQbfWuqJ0OpV_ndO0_nxq1fBGSjFCUgMT94uE_CWqt0dpOemyoJ4aTYJxl&flowName=GlifWebSignIn&flowEntry=ServiceLogin&dsh=S1292868188%3A1708386938146146&theme=glif">
+                <FaEnvelope style={{ fontSize: "20px", color: "#fff" }} />
+              </a>
               <h6
                 style={{
                   color: "#fff",
+                  fontFamily: "Playfair Display, serif",
                 }}
               >
-                ankitathorat501@gmail.com
+                vaas@gmail.com
               </h6>
             </li>
             <li>
+              <FaPhone style={{ fontSize: "20px", color: "#fff" }} />
               <h6
                 style={{
                   color: "#fff",
+                  fontFamily: "Playfair Display, serif",
                 }}
               >
-                988171880
+                +1123-456-7890
               </h6>
             </li>
           </ul>
@@ -156,5 +166,6 @@ export default function Footer() {
         </div>
       </div>
     </div>
+    // </div>
   );
 }
