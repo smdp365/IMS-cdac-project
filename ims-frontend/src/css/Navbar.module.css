@@ -10,14 +10,14 @@
 
 .logoContainer {
   width: 110px;
-  height: 50px;
+  height: 55px;
   background-color: #080000;
   margin-right: 10px;
   color: #ffffff;
 }
 .logoImage{
-  width: 100px;
-  height: 40px;
+  width: 100%;
+  height: 100%;
 }
 
 /* .logo {

@@ -25,7 +25,7 @@ export default function Home() {
                 message: inquireMessage,
             });
             console.log(res);
-            alert(res.data);
+            alert("Message sent successfully......");
         } catch (error) {
             console.error("Error submitting form:", error);
         }

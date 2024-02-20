@@ -104,17 +104,24 @@ export default function Navbar() {
                                 <button
                                     className={`btn ${styles.navBtn}`}
                                     onClick={() => {
-                                        console.log("Logout clicked");
-                                        sessionStorage.setItem(
-                                            "isLoggedIn",
-                                            "false"
+                                        const userConfirmation = window.confirm(
+                                            "Are you sure, you want to logout?"
                                         );
-                                        sessionStorage.setItem(
-                                            "username",
-                                            "username"
-                                        );
-                                        navigate("/");
-                                        window.location.reload();
+
+                                        if (userConfirmation) {
+                                            console.log("Logout clicked");
+                                            sessionStorage.setItem(
+                                                "isLoggedIn",
+                                                "false"
+                                            );
+                                            sessionStorage.setItem(
+                                                "username",
+                                                "username"
+                                            );
+                                            navigate("/");
+
+                                            window.location.reload();
+                                        }
                                     }}
                                 >
                                     Logout

@@ -33,6 +33,7 @@ export default function EditProduct() {
         try {
             await axios.put(`http://localhost:8080/product/${id}`, data);
             navigate("/products");
+            alert("Product details has been updated successfully.......");
         } catch (error) {
             console.error("Error updating product:", error);
         }

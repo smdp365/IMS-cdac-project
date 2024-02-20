@@ -16,6 +16,7 @@ export default function AddProduct() {
         try {
             await axios.post("http://localhost:8080/product", data);
             navigate("/products");
+            alert("Product details added successfully.....");
         } catch (error) {
             console.error("Error submitting form:", error);
         }
