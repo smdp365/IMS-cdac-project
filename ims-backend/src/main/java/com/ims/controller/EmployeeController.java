@@ -1,7 +1,5 @@
 package com.ims.controller;
 
-import com.ims.model.Employee;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +20,6 @@ import static com.ims.utils.Mapper.toEmployeeEntity;
 
 @RestController
 @CrossOrigin("http://localhost:5173")
-//@Slf4j
 public class EmployeeController {    
 
 	Logger logger = LoggerFactory.getLogger(getClass().getName());
@@ -31,10 +28,9 @@ public class EmployeeController {
     private EmployeeRepository employeeRepository;
 
     @PostMapping("/employee")
-    EmployeeEntity addEmployee(@RequestBody Employee employee){
+    EmployeeEntity addEmployee(@RequestBody EmployeeEntity employee){
     	logger.info("Adding new employee {}", employee);
-//    	log.info(newEmployee.getId());
-        return employeeRepository.save(toEmployeeEntity(employee));
+        return employeeRepository.save(employee);
     }
 
     @GetMapping("/allemployees")
@@ -42,11 +38,6 @@ public class EmployeeController {
         return employeeRepository.findAll();
     }
 
-//    @GetMapping("/employee/{id}")
-//    ResponseEntity<Employee> getEmployeeById(@PathVariable Long id){
-//        return ResponseEntity.badRequest().body(employeeRepository.findById(id)
-//                .orElseThrow(()->new EmployeeNotFoundException(id)));
-//    }
 
     @GetMapping("/employee/{id}")
     EmployeeEntity getEmployeeById(@PathVariable Long id){
@@ -77,26 +68,6 @@ public class EmployeeController {
         employeeRepository.deleteById(id);
         return "MySuccessfulMessage: Successfully deleted Employee with id " + id + " .";
     }
-    
-////    
-//    @PostMapping("/login")
-//	public ResponseEntity<Boolean> loginEmployee(@Validated @RequestBody Employee employee) throws EmployeeNotFoundException
-//	{
-//		Boolean isAuthenticated = false;
-//		String email=employee.getEmail();
-//		String password=employee.getPassword();
-//	
-//		Employee e = dservice.loginDealer(email).orElseThrow(() ->
-//		new ResourceNotFoundException("Dealer not found for this email :: " + email));
-//		
-//		if(email.equals(d.getEmail()) && password.equals(d.getPassword()))
-//		{
-//			isAuthenticated = true;
-//
-//		}
-//		return ResponseEntity.ok(isAuthenticated);
-//	}
-    
     
 
 

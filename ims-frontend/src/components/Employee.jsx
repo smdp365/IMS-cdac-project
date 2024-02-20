@@ -5,9 +5,6 @@ import styles from "../css/Employee.module.css";
 
 export default function Employee() {
     const [employees, setEmployees] = useState([]);
-    // const { id } = useParams();
-
-    //everytime the page is loaded this part will be shown on the page
     useEffect(() => {
         loadEmployees();
     }, []);
@@ -34,6 +31,7 @@ export default function Employee() {
                 <div className="py-4">
                     <div className="table-responsive">
                         <table className="table table-primary shadow">
+                            {/* table heading */}
                             <thead>
                                 <tr>
                                     <th
@@ -80,9 +78,11 @@ export default function Employee() {
                                     </th>
                                 </tr>
                             </thead>
+
+                            {/* table rows / data */}
                             <tbody>
                                 {employees.map((employee, index) => (
-                                    <tr key={employee.id}>
+                                    <tr key={index}>
                                         <th
                                             scope="row"
                                             key={index}

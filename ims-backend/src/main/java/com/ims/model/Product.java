@@ -15,22 +15,21 @@ import lombok.Setter;
 public class Product {
 	@Id
 	@GeneratedValue
-	private Long Id;
+	private Long id;
 	@NotBlank(message = "Product Name is mandatory")
 	private String productName;
-	private double price;
+	private double pricePerProduct;
 	private int quantity;
-
 	private Long categoryId;
 
 
 	public Long getId() {
-		return Id;
+		return id;
 	}
 
 
 	public void setId(Long id) {
-		Id = id;
+		this.id = id;
 	}
 
 
@@ -43,12 +42,12 @@ public class Product {
 		this.productName = productName;
 	}
 
-	public double getPrice() {
-		return price;
+	public double getPricePerProduct() {
+		return pricePerProduct;
 	}
 
-	public void setPrice(double pricePerProduct) {
-		this.price = pricePerProduct;
+	public void setPricePerProduct(double pricePerProduct) {
+		this.pricePerProduct = pricePerProduct;
 	}
 
 
@@ -81,9 +80,9 @@ public class Product {
 
 	public Product(Long id, String productName, double pricePerProduct, int quantity, Long categoryId) {
 		super();
-		Id = id;
+		this.id = id;
 		this.productName = productName;
-		this.price = pricePerProduct;
+		this.pricePerProduct = pricePerProduct;
 		this.quantity = quantity;
 		this.categoryId = categoryId;
 	}

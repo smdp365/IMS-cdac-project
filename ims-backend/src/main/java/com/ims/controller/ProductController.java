@@ -65,7 +65,7 @@ public class ProductController {
 	Product updateProduct(@RequestBody Product newProduct, @PathVariable Long id) {
 		return productRepository.findById(id).map(product -> {
 			product.setProductName(newProduct.getProductName());
-			product.setPrice(newProduct.getPrice());
+			product.setPricePerProduct(newProduct.getPricePerProduct());
 			product.setQuantity(newProduct.getQuantity());
 			product.setCategoryId(newProduct.getCategoryId());
 			return productRepository.save(product);

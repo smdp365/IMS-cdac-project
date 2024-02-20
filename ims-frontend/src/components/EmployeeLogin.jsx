@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
-import styles from "../css/AdminLogin.module.css";
+import styles from "../css/EmployeeLogin.module.css";
 import { useNavigate } from "react-router-dom";
 import { useUserLogged } from "../utils/flags";
 
-const AdminLogin = () => {
+const EmployeeLogin = () => {
     const [userLogged, setUserLogged] = useUserLogged();
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -14,7 +14,7 @@ const AdminLogin = () => {
         return axios.post("http://localhost:8080/login", {
             email: username,
             passwordHash: password,
-            isAdmin: true,
+            isAdmin: false,
         });
     };
 
@@ -28,8 +28,7 @@ const AdminLogin = () => {
 
                 // Update local storage and state with login status
                 sessionStorage.setItem("isLoggedIn", "true");
-                sessionStorage.setItem("isAdmin", "true");
-
+                sessionStorage.setItem("isAdmin", "false");
                 // setUserLogged("true"); // Try updating the state directly here
                 sessionStorage.setItem("username", username);
 
@@ -58,7 +57,7 @@ const AdminLogin = () => {
             </div>
             <div className={`${styles.right} col-sm-12 col-lg-6`}>
                 <div className={styles.formContainer}>
-                    <h2 className={styles.formHeading}>Admin Login</h2>
+                    <h2 className={styles.formHeading}>Employee Login</h2>
                     <form>
                         <input
                             type="text"
@@ -91,4 +90,4 @@ const AdminLogin = () => {
     );
 };
 
-export default AdminLogin;
+export default EmployeeLogin;

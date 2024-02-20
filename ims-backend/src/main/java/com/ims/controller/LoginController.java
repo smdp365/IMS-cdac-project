@@ -1,45 +1,60 @@
 package com.ims.controller;
 
-import com.ims.model.Login;
-import com.ims.repository.LoginRepository;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ims.exception.AdminNotFound;
+import com.ims.model.Login;
+import com.ims.service.LoginService;
+
+import static java.util.Objects.isNull;
+
 @RestController
-@CrossOrigin("http://localhost:5173")
-//@Slf4j
+@CrossOrigin(origins = "http://localhost:5173")
+//	@RequestMapping(value="/api")
 public class LoginController {
+    Logger logger = LoggerFactory.getLogger(getClass().getName());
 
     @Autowired
-    private LoginRepository loginRepository;
+    private LoginService loginService;
+
 
     @PostMapping("/login")
-    ResponseEntity<String> login(@RequestBody Login newLogin){
-//        loginRepository.save(newLogin);
-//        log.info("hiiiiiiii {}", newLogin.getEmail());
-        if(newLogin.getEmail().startsWith("pos")){
-            return new ResponseEntity<>( "Login Successful", HttpStatus.OK);
-        }else if(newLogin.getEmail().startsWith("neg")){
-            return new ResponseEntity<>( "Invalid credentials", HttpStatus.UNAUTHORIZED);
-        }else if(newLogin.getEmail().startsWith("war")){
-            return new ResponseEntity<>("User not found", HttpStatus.NOT_FOUND);
+    public ResponseEntity loginAdmin(@Validated @RequestBody Login login) throws AdminNotFound {
+
+        String email = login.getEmail();
+        String password = login.getPasswordHash();
+
+        logger.info("user login with email - {}", email);
+
+        Login login1 = loginService.loginAdmin(email);
+
+        if (isNull(login1)) {
+            logger.info("User not found for this email :: " + email);
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
-        return ResponseEntity.badRequest().body("bad request");
+
+        if (!login1.getPasswordHash().equals(login.getPasswordHash())) {
+            logger.info("TODO :: " + email);
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        }
+
+        if (login1.isAdmin() != login.isAdmin()) {
+            logger.info("TODO :: " + email);
+            return new ResponseEntity<>("ashjas", HttpStatus.UNAUTHORIZED);
+        }
+
+        return new ResponseEntity<>("Logged in successfully", HttpStatus.OK);
     }
 
-//    @PostMapping("/register")
-//    Void registerLogin(@RequestBody Login newLogin){
-//        loginRepository.save(newLogin);
-//        return null;
-//    }
-
-
-
 }
+
+
