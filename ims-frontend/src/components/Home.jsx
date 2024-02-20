@@ -1,10 +1,19 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import styles from "../css/Home.module.css";
 import axios from "axios";
 import { FaAward } from "react-icons/fa";
 import { MdAccessTime } from "react-icons/md";
 import { FaRegCircleCheck } from "react-icons/fa6";
 import { FiPhoneCall } from "react-icons/fi";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import product1 from "../assests/product1.jpg";
+import product2 from "../assests/product2.jpg";
+import product3 from "../assests/product3.jpg";
+import product4 from "../assests/product4.jpg";
+
+// logo maker ---->https://ezgif.com/remove-background/ezgif-1-d605b059ca.gif
 
 export default function Home() {
   const [inquireName, setInquireName] = useState("");
@@ -35,9 +44,35 @@ export default function Home() {
     setInquireMessage("");
   };
 
+  // Carousel settings
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 800,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 3,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+        },
+      },
+    ],
+  };
+
   return (
     <div className={`${styles.container}`}>
       {/* first row */}
+
       <div className={`${styles.firstRow} row`}>
         <div className={`${styles.firstRowCol} col-sm-12`}>
           <h4>
@@ -49,142 +84,33 @@ export default function Home() {
       </div>
 
       {/* second row */}
-      {/* <div className={`${styles.secondRow} row`}>
-        <div className={`${styles.secondRowCol} col-sm-12`}>
-          <h3 className={`${styles.secondRowColHeading}`}>
-            Certification & Awards
-          </h3>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-around",
-              marginTop: "30px",
-            }}
-          >
-            <div className={`${styles.secondRowColCertificate}`}></div>
-            <div className={`${styles.secondRowColCertificate}`}></div>
-            <div className={`${styles.secondRowColCertificate}`}></div>
-            <div className={`${styles.secondRowColCertificate}`}></div>
+
+      <div className={`${styles.sliderRow}`}>
+        <Slider {...settings}>
+          <div className={`${styles.productImage}`}>
+            <img src={product1} alt="Product 1" />
+            <a href="/" className="text-dark fs-4">Shoes</a>
+            {/* <h3>Shoes</h3> */}
           </div>
-        </div>
-      </div> */}
-      <div className={`${styles.secondRow} row`}>
-        <div className={`${styles.secondRowCol} col-sm-12`}>
-          <h4 className={`${styles.secondRowColHeading}`}>Why To Choose Us</h4>
-          <h3>Four Reasons To People Choosing Us</h3>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-around",
-              marginTop: "30px",
-            }}
-          >
-            <div className={`${styles.secondRowColCertificate}`}>
-              <FaAward className={`${styles.icon1}`}/>
-              {/* <FaAward 
-                                style={{ 
-                                       color: "#0000FF", 
-                                       margin: "15px",
-                                       fontSize: "40px"
-                                     }} 
-                                     />        */}
-              <h4 style={{ color: "#A52A2A" }}>Quality Material</h4>
-              <p>
-                Lorem ipsum dolor sit This is paraghraph res sit deleniti
-                reiciendis atque.
-              </p>
-            </div>
-            <div className={`${styles.secondRowColCertificate}`}>
-              <MdAccessTime />
-              {/* <MdAccessTime 
-                            style={{ 
-                                   color: "#0000FF", 
-                                   margin: "15px",
-                                   fontSize: "40px"
-                                 }} 
-                                 />        */}
-              <h4 style={{ color: "#A52A2A" }}>Time Availability</h4>
-              <p>
-                Lorem ipsum dolor sit This is paraghraph res sit deleniti
-                reiciendis atque.
-              </p>
-            </div>
-            <div className={`${styles.secondRowColCertificate}`}>
-              <FiPhoneCall />
-              {/* <FiPhoneCall 
-                            style={{ 
-                                   color: "#0000FF", 
-                                   margin: "15px",
-                                   fontSize: "40px"
-                                 }} 
-                                 />        */}
-              <h4 style={{ color: "#A52A2A" }}>Quick Response</h4>
-              <p>
-                Lorem ipsum dolor sit This is paraghraph res sit deleniti
-                reiciendis atque.
-              </p>
-            </div>
-            <div className={`${styles.secondRowColCertificate}`}>
-              <FaRegCircleCheck />
-              {/* <FaRegCircleCheck 
-                            style={{ 
-                                   color: "#0000FF", 
-                                   margin: "15px",
-                                   fontSize: "40px"
-                                 }} 
-                                 />        */}
-              <h4 style={{ color: "#A52A2A" }}>Accredited</h4>
-              <p>
-                Lorem ipsum dolor sit This is paraghraph res sit deleniti
-                reiciendis atque.
-              </p>
-            </div>
+          <div>
+            <img src={product2} alt="Product 2" />
+            <a href="/" className="text-dark fs-4">Shoes</a>
           </div>
-        </div>
+          <div>
+            <img src={product3} alt="Product 3" />
+            <a href="/" className="text-dark fs-4">Shoes</a>
+          </div>
+          <div>
+            <img src={product4} alt="Product 4" />
+            <a href="/" className="text-dark fs-4">Shoes</a>
+          </div>
+        </Slider>
       </div>
 
       {/* third row */}
-      <div
-        className="row"
-        style={{
-          backgroundColor: "#023E8A",
-          color: "#FFFFFF",
-          padding: "2%",
-          height: "100px",
-        }}
-      >
-        <h3>Our Products</h3>
-      </div>
-      <div className={`${styles.thirdRow} row`}>
-        <div className={`${styles.thirdRowCol} col-sm-12`}>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-around",
-              marginTop: "20px",
-            }}
-            className={`${styles.thirdRowCol} col-sm-12`}
-          >
-            <div className={`${styles.thirdRowColProduct}`}></div>
-            <div className={`${styles.thirdRowColProduct}`}></div>
-            <div className={`${styles.thirdRowColProduct}`}></div>
-            <div className={`${styles.thirdRowColProduct}`}></div>
-          </div>
-        </div>
-      </div>
-      {/* fourth row */}
-      <div
-        className="row"
-        style={{
-          backgroundColor: "#023E8A",
-          color: "#FFFFFF",
-          padding: "3%",
-          height: "100px",
-        }}
-      >
-        <h3>Inquire Us</h3>
-      </div>
+
       <div className={`${styles.fourthRow} row`}>
+        <h3 className="text-light">Feedback Form</h3>
         <div className={`${styles.fourthRowCol} col-sm-4`}></div>
         <div className={`${styles.fourthRowColmiddle} col-sm-4`}>
           <div className={`${styles.fourthRowCol} col-sm-4`}></div>
@@ -230,6 +156,79 @@ export default function Home() {
               Submit
             </button>
           </form>
+        </div>
+      </div>
+
+      {/* fourth row */}
+
+      <div className={`${styles.secondRow} row`}>
+        <div className={`${styles.secondRowCol} col-sm-12`}>
+          <h4 className={`${styles.secondRowColHeading}`}>Why To Choose Us</h4>
+          <h3>Four Reasons To People Choosing Us</h3>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-around",
+              marginTop: "30px",
+            }}
+          >
+            <div className={`${styles.secondRowColCertificate}`}>
+              <FaAward
+                style={{
+                  color: "#0000FF",
+                  margin: "15px",
+                  fontSize: "40px",
+                }}
+              />
+              <h4 style={{ color: "#A52A2A" }}>Quality Material</h4>
+              <p>
+                We use only the highest quality materials for our products,
+                ensuring durability and customer satisfaction.
+              </p>
+            </div>
+            <div className={`${styles.secondRowColCertificate}`}>
+              <MdAccessTime
+                style={{
+                  color: "#0000FF",
+                  margin: "15px",
+                  fontSize: "40px",
+                }}
+              />
+              <h4 style={{ color: "#A52A2A" }}>Time Availability</h4>
+              <p>
+                Our company is fully accredited, ensuring that you can trust the
+                quality and reliability of our products and services.
+              </p>
+            </div>
+            <div className={`${styles.secondRowColCertificate}`}>
+              <FiPhoneCall
+                style={{
+                  color: "#0000FF",
+                  margin: "15px",
+                  fontSize: "40px",
+                }}
+              />
+              <h4 style={{ color: "#A52A2A" }}>Quick Response</h4>
+              <p>
+                We pride ourselves on our quick response time. Our customer
+                support team is here to assist you whenever you need it.
+              </p>
+            </div>
+            <div className={`${styles.secondRowColCertificate}`}>
+              <FaRegCircleCheck
+                style={{
+                  color: "#0000FF",
+                  margin: "15px",
+                  fontSize: "40px",
+                }}
+              />
+              <h4 style={{ color: "#A52A2A" }}>Accredited</h4>
+              <p>
+                Our products are always available when you need them. We value
+                your time and strive to meet your needs promptly.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>

@@ -1,5 +1,5 @@
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import DetailsEmployee from "./components/DetailsEmployee";
 import AddEmployee from "./components/AddEmployee";
 import EditEmployee from "./components/EditEmployee";
@@ -19,6 +19,7 @@ import AdminLogin from "./components/AdminLogin";
 import { useEffect, useState } from "react";
 import { useEmployeeOptionVisibility } from "./utils/flags";
 import Footer from "./components/Footer";
+import BillForm from "./components/Bill";
 
 function App() {
   const isEmployeeOptionVisible = useEmployeeOptionVisibility();
@@ -54,6 +55,8 @@ function App() {
                   element={<DetailsEmployee />}
                 />
                 <Route exact path="/sales" element={<Sales />} />
+
+                <Route exact path="/bill" element={<BillForm />} />
                 <Route exact path="/products" element={<Products />} />
                 <Route exact path="/addproduct" element={<AddProduct />} />
                 <Route

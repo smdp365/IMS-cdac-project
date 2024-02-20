@@ -1,64 +1,102 @@
-import bgimg from "../assests/img-tab.png";
-import styles from "../css/ContactUs.module.css";
+import { FaMapMarkerAlt, FaPhone, FaEnvelope } from "react-icons/fa";
+import conbg from "../assests/contactbg.svg";
 
 export default function ContactUs() {
-    return (
-        <>
-            <div>
-                <img src={bgimg} alt="Image" className={`${styles.bgImage}`} />
-                <div className={`${styles.textOnImage}`}>
-                    <h1 className="contacthero mb-5">CONTACT US</h1>
-                </div>
-            </div>
-            <div className={`row center-row m-5 `}>
-                <div className={`col-md-5`}>
-                    <h2 className={`pb-4 ${styles.contacthead}`}>
-                        WE'RE READY, LET'S TALK.
-                    </h2>
-                    <form>
-                        <div className={`form-group pt-3 pb-3`}>
-                            <input
-                                type="email"
-                                className="form-control"
-                                id="exampleInputEmail1"
-                                aria-describedby="emailHelp"
-                                placeholder="Enter email"
-                            />
-                        </div>
-                        <div className={`form-group pt-3 pb-3`}>
-                            <input
-                                type="password"
-                                className="form-control"
-                                id="exampleInputPassword1"
-                                placeholder="Password"
-                            />
-                        </div>
-                        <div className={`form-group pt-3 pb-3`}>
-                            <textarea
-                                className="form-control"
-                                id="exampleFormControlTextarea1"
-                                rows="4"
-                                placeholder="Message"
-                            ></textarea>
-                        </div>
-                        <button type="submit" className={`btn btn-primary`}>
-                            Send Message
-                        </button>
-                    </form>
-                </div>
-
-                <div className={`col-md-5 ${styles.contactright}`}>
-                    <h2 className={`pb-5 ${styles.contactinfo}`}>
-                        CONTACT INFO
-                    </h2>
-                    <h4 className={`${styles.contactadd}`}>Address</h4>
-                    <p>SLN Showroom , doddhathogur, Electronic City</p>
-                    <h4 className={`${styles.contactemail}`}>Email Us</h4>
-                    <p>ankitathorat501@gmail.com</p>
-                    <h4 className={`${styles.contactcall}`}>Call Us</h4>
-                    <p>9881714880</p>
-                </div>
-            </div>
-        </>
-    );
+  return (
+    <>
+      <div>
+        <div
+          style={{
+            backgroundImage: `url(${conbg})`,
+            backgroundColor: "#62626e",
+            padding: "20px",
+            height: "400px",
+          }}
+        >
+          <h1
+            style={{
+              color: "#fff",
+              fontSize: "72px",
+              display: "flex",
+              alignItems: "center",
+              height: "50vh",
+            }}
+          >
+            CONTACT US
+          </h1>
+        </div>
+      </div>
+      <div className="row">
+        <div className="col-1 "></div>
+        <div
+          className="col-5 "
+          style={{
+            backgroundColor: "#fff",
+            padding: "50px",
+            margin: "40px 10px 40px -10px",
+            border: "#023e8a 3px solid",
+          }}
+        >
+          <h5
+            style={{
+              color: "#023e8a",
+              textAlign: "left",
+              fontSize: "25px",
+              marginBottom: "40px",
+            }}
+          >
+            LET'S MAKE IT HAPPEN
+          </h5>
+          <h2 style={{ fontSize: "56px", textAlign: "left" }}>
+            Don't Hesitate To <br />
+            Get in Touch.{" "}
+          </h2>
+          <p style={{ textAlign: "left", marginTop: "40px" }}>
+            Our Contact Us page is designed to provide you with a seamless and
+            efficient way to get in touch with us. Whether you have questions
+            about our products, need assistance with an order, or simply want to
+            provide feedback, we're here to help.
+          </p>
+        </div>
+        <div className="col-1 "></div>
+        <div
+          className="col-4"
+          style={{
+            backgroundColor: "#fff",
+            padding: "50px",
+            margin: "40px 10px 40px -10px",
+            border: "#023e8a 3px solid",
+          }}
+        >
+          <FaMapMarkerAlt
+            style={{
+              fontSize: "2rem",
+              marginTop: "40px",
+              marginBottom: "10px",
+              color: "#023e8a",
+            }}
+          />
+          <h5>SLN Showroom,near velankani gate,Electronic City,Bangalore</h5>
+          <FaPhone
+            style={{
+              fontSize: "2rem",
+              marginTop: "40px",
+              marginBottom: "10px",
+              color: "#023e8a",
+            }}
+          />
+          <h5>+1123-456-7890</h5>
+          <FaEnvelope
+            style={{
+              fontSize: "2rem",
+              marginTop: "40px",
+              marginBottom: "10px",
+              color: "#023e8a",
+            }}
+          />
+          <h5>vaas@gmail.com</h5>
+        </div>
+      </div>
+    </>
+  );
 }

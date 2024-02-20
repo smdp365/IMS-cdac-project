@@ -13,7 +13,7 @@ import com.ims.service.EmailService;
 
 
 @RestController
-@CrossOrigin("http://localhost:5174")
+@CrossOrigin("http://localhost:5173")
 public class InquiryController {
 
     @Autowired

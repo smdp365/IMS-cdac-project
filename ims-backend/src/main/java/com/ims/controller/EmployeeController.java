@@ -21,7 +21,7 @@ import java.util.List;
 import static com.ims.utils.Mapper.toEmployeeEntity;
 
 @RestController
-@CrossOrigin("http://localhost:5174")
+@CrossOrigin("http://localhost:5173")
 //@Slf4j
 public class EmployeeController {    
 

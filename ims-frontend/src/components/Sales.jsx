@@ -1,13 +1,16 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "../css/Sales.module.css";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import BillForm from "./Bill";
+import { globalProducts, useProducts } from "../utils/data";
 
 export default function Sales() {
   const [products, setProducts] = useState({});
   const [unitCounts, setUnitCounts] = useState({});
   const [totalPrices, setTotalPrices] = useState({});
 
+  globalProducts["asbd"] = 45;
   useEffect(() => {
     loadProducts();
   }, []);
@@ -26,7 +29,7 @@ export default function Sales() {
       });
 
       // Now, productsDict will contain the products data in dictionary-like format
-      console.log("prodctDict - ", productsDict);
+      // console.log("prodctDict - ", productsDict);
       setProducts(productsDict);
     } catch (error) {
       console.error("Error loading products:", error);
@@ -69,12 +72,12 @@ export default function Sales() {
         ...totalPrices,
         [productId]: updatedUnitCount * products[productId].price,
       }));
-      console.log(
-        "printed",
-        updatedUnitCount,
-        products[productId].price,
-        totalPrices[productId]
-      );
+      // console.log(
+      //   "printed",
+      //   updatedUnitCount,
+      //   products[productId].price,
+      //   totalPrices[productId]
+      // );
     }
   };
 
@@ -88,8 +91,66 @@ export default function Sales() {
     }
   };
 
+  const printDivRef = useRef(null);
+
+  // useEffect(() => {
+  //   // Render the BillForm component into the hidden div when the component mounts
+  //   printDivRef.current && (printDivRef.current.innerHTML = "<BillForm />");
+  // }, []);
+
+  // const salesData = [];
+
+  // function printContent1() {
+  //   // Open a new window
+  //   const printWindow = window.open("", "_blank");
+
+  //   // Render the BillForm component into the new window
+  //   printWindow.document.body.innerHTML = "<BillForm />";
+
+  //   // Wait for the content to be rendered, then print
+  //   printWindow.onload = function () {
+  //     printWindow.print();
+  //   };
+  // }
+  // const printContentRef = useRef(null);
+
+  // function printContent() {
+  //   const printContent = printContentRef.current.innerHTML;
+  //   const originalContent = document.body.innerHTML;
+
+  //   document.body.innerHTML = printContent;
+  //   window.print();
+  //   document.body.innerHTML = originalContent;
+  // }
+  // function printContent() {
+  //   // Print the content
+  //   window.print();
+  // }
+
+  // function printContent() {
+  //   console.log("Click the button");
+
+  //   // Render the BillForm component into a hidden div
+  //   const printDiv = document.createElement("div");
+  //   printDiv.style.display = "none";
+  //   document.body.appendChild(printDiv);
+  //   ReactDOM.render(<BillForm />, printDiv);
+
+  //   // Print the content
+  //   window.print();
+
+  //   // Clean up
+  //   document.body.removeChild(printDiv);
+  //   console.log("Click the button 2");
+  // }
+
   return (
     <>
+      {/* Table to print bill resecipt data */}
+      {/* <div ref={printContentRef} style={{ display: "none" }}>
+        <BillForm />
+      </div>
+      <BillForm id="contentToPrint" style={{ display: "none" }}></BillForm> */}
       <div className={`container ${styles.mainContainer}`}>
         <div className="py-4">
           <div className="table-responsive">
@@ -100,7 +161,7 @@ export default function Sales() {
                     S.No.
                   </th>
                   <th className={`${styles.tableHeading}`} scope="col">
-                    ID
+                    Product Id
                   </th>
                   <th className={`${styles.tableHeading}`} scope="col">
                     Product Name
@@ -109,10 +170,10 @@ export default function Sales() {
                     Unit Price
                   </th>
                   <th className={`${styles.tableHeading}`} scope="col">
-                    Total Units
+                    Units
                   </th>
                   <th className={`${styles.tableHeading}`} scope="col">
-                    Total Amount
+                    Amount
                   </th>
                   {/* <th className={` ${styles.tableHeading}`} scope="col">
                     Actions
@@ -123,8 +184,8 @@ export default function Sales() {
               <tbody>
                 {Object.keys(products).map((productId, index) => {
                   const product = products[productId];
-                  console.log(productId, index, product);
-                  console.debug(productId, index, product);
+                  // console.log(productId, index, product);
+                  // console.debug(productId, index, product);
 
                   return (
                     <tr key={product.id}>
@@ -184,13 +245,36 @@ export default function Sales() {
                 })}
               </tbody>
             </table>
-            {
-              <div className={`${styles.sideBar}`}>
-                <Link className={`btn ${styles.addButton}`} to="/bill">
-                  Bill
-                </Link>
-              </div>
-            }
+            <div className={`${styles.sideBar}`}>
+              <Link
+                className={`btn ${styles.addButton}`}
+                onClick={() => {
+                  // globalProducts.clear();
+                  console.log("Redirecting to Bill page");
+                  for (var k in globalProducts) {
+                    globalProducts[k] = null;
+                  }
+                  for (var k in products) {
+                    if (unitCounts[k] > 0) {
+                      globalProducts[k] = {
+                        id: products[k].id,
+                        name: products[k].productName,
+                        price: products[k].price,
+                        units: unitCounts[k],
+                        totalPrice: totalPrices[k],
+                      };
+                    }
+                  }
+                }}
+                to={{
+                  pathname: "/bill",
+                  state: { products },
+                  products: products,
+                }}
+              >
+                Bill
+              </Link>
+            </div>
           </div>
         </div>
       </div>
