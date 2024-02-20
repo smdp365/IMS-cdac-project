@@ -16,16 +16,16 @@ public class Login {
     private Long id;
     private String email;
     private String passwordHash;
+	private boolean isAdmin = false;
+
 
 	public boolean isAdmin() {
 		return isAdmin;
 	}
 
-	public void setAdmin(boolean admin) {
+	public void setIsAdmin(boolean admin) {
 		isAdmin = admin;
 	}
-
-	private boolean isAdmin = false;
 
 	public Login(Long id, String email, String passwordHash) {
 		this.id = id;

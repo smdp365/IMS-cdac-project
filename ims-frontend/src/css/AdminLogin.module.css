@@ -10,13 +10,11 @@
 .left {
   background-color: #023e8a;
   border-radius: 7px;
+  padding: 5%;
 }
 
 .right {
-  /* display: flex;
-    align-items: center;
-    justify-content: center; */
-  /* margin-top: 100px; */
+  margin: auto;
 }
 
 .imageDiv {

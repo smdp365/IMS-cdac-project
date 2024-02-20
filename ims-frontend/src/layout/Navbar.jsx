@@ -1,11 +1,12 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "../css/Navbar.module.css";
-import { useEmployeeOptionVisibility } from "../utils/flags";
+import { useIsAdmin, useIsLoggedIn } from "../utils/flags";
 
 export default function Navbar() {
-    const isEmployeeOptionVisible = useEmployeeOptionVisibility();
-    console.log("isEmployeeOptionVisible : ", isEmployeeOptionVisible);
+    const isLoggedIn = useIsLoggedIn();
+    const isAdmin = useIsAdmin();
+
     const navigate = useNavigate();
 
     return (
@@ -44,23 +45,24 @@ export default function Navbar() {
                             <Link className={`btn ${styles.navBtn}`} to="/">
                                 Home
                             </Link>
-                            {isEmployeeOptionVisible && (
+                            {isLoggedIn && (
                                 <li className="nav-item">
-                                    {isEmployeeOptionVisible && (
-                                        <Link
-                                            className={`btn ${styles.navBtn}`}
-                                            to="/employee"
-                                        >
-                                            Employee
-                                        </Link>
+                                    {isAdmin && (
+                                        <>
+                                            <Link
+                                                className={`btn ${styles.navBtn}`}
+                                                to="/employee"
+                                            >
+                                                Employee
+                                            </Link>
+                                            <Link
+                                                className={`btn ${styles.navBtn}`}
+                                                to="/products"
+                                            >
+                                                Products
+                                            </Link>
+                                        </>
                                     )}
-
-                                    <Link
-                                        className={`btn ${styles.navBtn}`}
-                                        to="/products"
-                                    >
-                                        Products
-                                    </Link>
 
                                     <Link
                                         className={`btn ${styles.navBtn}`}
@@ -84,7 +86,7 @@ export default function Navbar() {
                                 Contact us
                             </Link>
 
-                            {!isEmployeeOptionVisible && (
+                            {!isLoggedIn && (
                                 <Link
                                     className={`btn ${styles.navBtn}`}
                                     to="/login"
@@ -93,16 +95,16 @@ export default function Navbar() {
                                 </Link>
                             )}
 
-                            {isEmployeeOptionVisible && (
+                            {isLoggedIn && (
                                 <button
                                     className={`btn ${styles.navBtn}`}
                                     onClick={() => {
                                         console.log("Logout clicked");
-                                        localStorage.setItem(
+                                        sessionStorage.setItem(
                                             "isLoggedIn",
                                             "false"
                                         );
-                                        localStorage.setItem(
+                                        sessionStorage.setItem(
                                             "username",
                                             "username"
                                         );
