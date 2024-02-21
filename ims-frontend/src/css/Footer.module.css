@@ -1,21 +1,9 @@
-/* .footer {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-.footer-content {
-  display: flex;
-}
-
-.footer-row {
-  flex: 1;
-} */
 
 .firstRow {
   background-color: #333 !important;
   margin-top: 30px !important;
   padding-top: 20px !important;
+  width: 100.8%;
 }
 .secondRow {
   justify-content: center !important;
@@ -30,7 +18,13 @@
 
 .fourthRow {
   font-family: "Playfair Display, serif" !important;
+  background-color: black;
+  margin: 0;
+  width: 101%;
+  padding: 0;
+  
 }
+
 
 .copyright {
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",

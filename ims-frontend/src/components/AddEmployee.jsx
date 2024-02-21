@@ -17,6 +17,7 @@ export default function AddEmployee() {
             console.log("data is ", data);
             await axios.post("http://localhost:8080/employee", data);
             navigate("/employee");
+            alert("Employee has been added successfully........");
         } catch (error) {
             console.error("Error submitting form:", error);
         }

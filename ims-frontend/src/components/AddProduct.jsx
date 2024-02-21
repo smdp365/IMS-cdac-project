@@ -16,6 +16,7 @@ export default function AddProduct() {
         try {
             await axios.post("http://localhost:8080/product", data);
             navigate("/products");
+            alert("Product details added successfully.....");
         } catch (error) {
             console.error("Error submitting form:", error);
         }
@@ -44,7 +45,7 @@ export default function AddProduct() {
                                 {...register("productName", {
                                     required: "Product name is required",
                                     pattern: {
-                                        value: /^[A-Za-z]+$/,
+                                        value: /^[A-Za-z0-9 ]+$/,
                                         message:
                                             "Invalid characters. Only letters are allowed.",
                                     },

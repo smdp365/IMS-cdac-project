@@ -35,10 +35,12 @@ const AdminLogin = () => {
 
                 console.log("Login successful", userLogged); // This might still show the old value due to closure
                 navigate("/");
+                alert(`Hello, ${username}......`);
                 window.location.reload();
             })
             .catch((error) => {
                 console.error("Error submitting form:", error);
+                alert("Wrong credentials...........");
             });
     };
 

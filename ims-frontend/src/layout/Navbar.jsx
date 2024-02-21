@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "../css/Navbar.module.css";
+import logo from "../layout/logo.gif";
 import { useIsAdmin, useIsLoggedIn } from "../utils/flags";
 
 export default function Navbar() {
@@ -13,8 +14,13 @@ export default function Navbar() {
         <div>
             <nav className={`navbar navbar-expand-lg shadow  ${styles.navbar}`}>
                 <div className={`container ${styles.container}`}>
-                    <div className={`navbar-brand ${styles.logoContainer}`}>
-                        <p className="text-center fs-2">VAAS</p>
+                    <div className={`navbar-brand ${styles.logoContainer}`} onClick={() => {navigate("/")}}>
+                        <img
+                            src={logo}
+                            alt="Logo"
+                            className={`${styles.logoImage}`}
+                            
+                        />
                     </div>
 
                     <ul className="navbar-nav">
@@ -99,17 +105,24 @@ export default function Navbar() {
                                 <button
                                     className={`btn ${styles.navBtn}`}
                                     onClick={() => {
-                                        console.log("Logout clicked");
-                                        sessionStorage.setItem(
-                                            "isLoggedIn",
-                                            "false"
+                                        const userConfirmation = window.confirm(
+                                            "Are you sure, you want to logout?"
                                         );
-                                        sessionStorage.setItem(
-                                            "username",
-                                            "username"
-                                        );
-                                        navigate("/");
-                                        window.location.reload();
+
+                                        if (userConfirmation) {
+                                            console.log("Logout clicked");
+                                            sessionStorage.setItem(
+                                                "isLoggedIn",
+                                                "false"
+                                            );
+                                            sessionStorage.setItem(
+                                                "username",
+                                                "username"
+                                            );
+                                            navigate("/");
+
+                                            window.location.reload();
+                                        }
                                     }}
                                 >
                                     Logout

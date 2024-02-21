@@ -15,7 +15,11 @@ export default function Employee() {
     };
 
     const deleteEmployee = async (id) => {
-        await axios.delete(`http://localhost:8080/employee/${id}`);
+        const userConfirmation = window.confirm("Are you sure, you want to delete the employee detail...?");
+
+        if (userConfirmation) {
+            await axios.delete(`http://localhost:8080/employee/${id}`);
+        }
         loadEmployees();
     };
 

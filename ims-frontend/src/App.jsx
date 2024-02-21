@@ -19,6 +19,7 @@ import Footer from "./components/Footer";
 import LogSign from "./components/LogSign";
 import AdminLogin from "./components/AdminLogin";
 import EmployeeLogin from "./components/EmployeeLogin";
+import Bill from "./components/Bill";
 
 function App() {
     const isLoggedIn = useIsLoggedIn();
@@ -55,6 +56,7 @@ function App() {
                             path="/contactus"
                             element={<ContactUs />}
                         />
+                        <Route exact path="/bill" element={<Bill />} />
                         {isLoggedIn && (
                             <>
                                 <Route

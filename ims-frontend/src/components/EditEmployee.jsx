@@ -33,6 +33,7 @@ export default function EditEmployee() {
         try {
             await axios.put(`http://localhost:8080/employee/${id}`, data);
             navigate("/employee");
+            alert("Employee details has been updated....")
         } catch (error) {
             console.error("Error updating employee:", error);
         }
